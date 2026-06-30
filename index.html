@@ -4,207 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SovereignAI — Infrastructure Sovereignty</title>
-    <meta name="description" content="Your AI. Your Data. Your Privacy. SovereignAI builds AI systems that organizations own and control.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Local Intelligence. Absolute Authority. Permanent Privacy. Your AI. Your Data. Your Privacy.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="4" width="32" height="32" fill="none" stroke="#C9A84C" stroke-width="2"/>
-                    <rect x="10" y="10" width="20" height="20" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-                    <rect x="16" y="16" width="8" height="8" fill="#C9A84C"/>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <svg class="logo-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Shield -->
+                    <path d="M32 4 L56 16 L56 36 C56 50 44 60 32 62 C20 60 8 50 8 36 L8 16 Z" 
+                          fill="none" stroke="#C78BA0" stroke-width="2.5" stroke-linejoin="round"/>
+                    <!-- Circuit Tree Trunk -->
+                    <line x1="32" y1="54" x2="32" y2="24" stroke="#C78BA0" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Branches Left -->
+                    <line x1="32" y1="40" x2="22" y2="34" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="22" y1="34" x2="18" y2="28" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="32" y1="34" x2="24" y2="26" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Branches Right -->
+                    <line x1="32" y1="40" x2="42" y2="34" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="42" y1="34" x2="46" y2="28" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="32" y1="34" x2="40" y2="26" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <!-- Circuit Nodes -->
+                    <circle cx="32" cy="24" r="3" fill="#C78BA0"/>
+                    <circle cx="18" cy="28" r="2.5" fill="#C78BA0"/>
+                    <circle cx="46" cy="28" r="2.5" fill="#C78BA0"/>
+                    <circle cx="24" cy="26" r="2" fill="#304E63" stroke="#C78BA0" stroke-width="1"/>
+                    <circle cx="40" cy="26" r="2" fill="#304E63" stroke="#C78BA0" stroke-width="1"/>
+                    <circle cx="22" cy="34" r="2" fill="#304E63" stroke="#C78BA0" stroke-width="1"/>
+                    <circle cx="42" cy="34" r="2" fill="#304E63" stroke="#C78BA0" stroke-width="1"/>
+                    <!-- Root Node -->
+                    <circle cx="32" cy="54" r="2.5" fill="#C78BA0"/>
                 </svg>
-                <span class="logo-text">SOVEREIGN<span class="logo-accent">AI</span></span>
+                <span class="nav-wordmark">SOVEREIGN<span class="accent">AI</span></span>
             </a>
             <div class="nav-links">
                 <a href="#verticals">Verticals</a>
-                <a href="#grid">Architecture</a>
-                <a href="#contact">Contact</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#contact" class="nav-cta">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-grid-bg"></div>
+        <div class="hero-grid"></div>
         <div class="hero-content">
-            <p class="hero-tag">Infrastructure Sovereignty</p>
-            <h1 class="hero-title">Your AI.<br>Your Data.<br>Your Privacy.</h1>
-            <p class="hero-subtitle">We build AI systems that organizations own and control. No cloud dependency. No data leaving your building. No vendor lock-in.</p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Partner With Us</a>
-                <a href="#verticals" class="btn btn-secondary">Explore Verticals</a>
+            <h1 class="hero-title">Infrastructure<br>Sovereignty.</h1>
+            <p class="hero-tagline">Local Intelligence. Absolute Authority. Permanent Privacy.</p>
+            <div class="hero-motto">
+                <span class="motto-line">Your AI. Your Data. Your Privacy.</span>
             </div>
-            <div class="hero-metrics">
-                <div class="metric">
-                    <span class="metric-value">100%</span>
-                    <span class="metric-label">On-Premise</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-value">Zero</span>
-                    <span class="metric-label">Cloud Dependency</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-value">5-Tier</span>
-                    <span class="metric-label">Intelligence Stack</span>
-                </div>
-            </div>
+            <a href="#architecture" class="hero-cta">Explore Architecture →</a>
+        </div>
+        <div class="hero-visual">
+            <svg class="hero-shield" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#C78BA0;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#304E63;stop-opacity:0.1"/>
+                    </linearGradient>
+                </defs>
+                <path d="M100 10 L185 50 L185 120 C185 170 145 210 100 230 C55 210 15 170 15 120 L15 50 Z" 
+                      fill="url(#shieldGrad)" stroke="#C78BA0" stroke-width="1.5" opacity="0.6"/>
+                <path d="M100 30 L170 62 L170 115 C170 155 140 190 100 208 C60 190 30 155 30 115 L30 62 Z" 
+                      fill="none" stroke="#4A5D6B" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.5"/>
+                <!-- Circuit tree large -->
+                <line x1="100" y1="190" x2="100" y2="70" stroke="#C78BA0" stroke-width="1.5" opacity="0.8"/>
+                <line x1="100" y1="140" x2="70" y2="110" stroke="#C78BA0" stroke-width="1" opacity="0.6"/>
+                <line x1="100" y1="140" x2="130" y2="110" stroke="#C78BA0" stroke-width="1" opacity="0.6"/>
+                <line x1="100" y1="110" x2="60" y2="80" stroke="#C78BA0" stroke-width="1" opacity="0.6"/>
+                <line x1="100" y1="110" x2="140" y2="80" stroke="#C78BA0" stroke-width="1" opacity="0.6"/>
+                <line x1="70" y1="110" x2="55" y2="90" stroke="#C78BA0" stroke-width="0.8" opacity="0.4"/>
+                <line x1="130" y1="110" x2="145" y2="90" stroke="#C78BA0" stroke-width="0.8" opacity="0.4"/>
+                <circle cx="100" cy="70" r="5" fill="#C78BA0" opacity="0.9"/>
+                <circle cx="70" cy="110" r="4" fill="#C78BA0" opacity="0.7"/>
+                <circle cx="130" cy="110" r="4" fill="#C78BA0" opacity="0.7"/>
+                <circle cx="60" cy="80" r="3" fill="#C78BA0" opacity="0.5"/>
+                <circle cx="140" cy="80" r="3" fill="#C78BA0" opacity="0.5"/>
+                <circle cx="55" cy="90" r="2.5" fill="#C78BA0" opacity="0.4"/>
+                <circle cx="145" cy="90" r="2.5" fill="#C78BA0" opacity="0.4"/>
+                <circle cx="100" cy="190" r="4" fill="#C78BA0" opacity="0.8"/>
+            </svg>
         </div>
     </section>
 
-    <!-- Strategic Verticals -->
+    <!-- Verticals Section -->
     <section id="verticals" class="verticals">
-        <div class="section-container">
-            <p class="section-tag">Strategic Verticals</p>
-            <h2 class="section-title">Purpose-Built Intelligence</h2>
-            <p class="section-subtitle">Sovereign AI infrastructure for industries where data cannot leave the building.</p>
-            <div class="verticals-grid">
-                <div class="vertical-card">
-                    <div class="vertical-icon">
-                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="24" r="8" fill="none" stroke="#C9A84C" stroke-width="2"/>
-                            <path d="M24 8v4M24 36v4M8 24h4M36 24h4M12 12l3 3M33 33l3 3M12 36l3-3M33 15l3-3" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Energy</h3>
-                    <p>Grid optimization, predictive maintenance, and real-time SCADA analysis. All intelligence stays within your operational perimeter.</p>
-                    <span class="vertical-tag">Critical Infrastructure</span>
+        <div class="section-header">
+            <span class="section-label">VERTICALS</span>
+            <h2 class="section-title">Sovereign Intelligence<br>Across Domains</h2>
+        </div>
+        <div class="verticals-grid">
+            <div class="vertical-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="10" fill="none" stroke="#C78BA0" stroke-width="2"/>
+                        <path d="M24 8 L24 14 M24 34 L24 40 M8 24 L14 24 M34 24 L40 24" stroke="#C78BA0" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="24" cy="24" r="4" fill="#C78BA0" opacity="0.6"/>
+                        <path d="M18 12 L24 18 M30 12 L24 18 M18 36 L24 30 M30 36 L24 30" stroke="#4A5D6B" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+                    </svg>
                 </div>
-                <div class="vertical-card">
-                    <div class="vertical-icon">
-                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 8l-2 8h4l-2 8" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M16 28c0 6 3.6 12 8 12s8-6 8-12" fill="none" stroke="#C9A84C" stroke-width="2"/>
-                            <line x1="16" y1="28" x2="32" y2="28" stroke="#C9A84C" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <h3>Healthcare</h3>
-                    <p>HIPAA-sovereign patient data analysis, diagnostic support, and clinical workflow automation. Zero external data exposure.</p>
-                    <span class="vertical-tag">Patient Privacy</span>
+                <h3 class="card-title">Energy</h3>
+                <p class="card-desc">Grid intelligence that never phones home. Autonomous optimization at the edge, where connectivity is a luxury.</p>
+            </div>
+            <div class="vertical-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 8 L24 18 M20 18 L28 18 M20 18 L16 28 L20 28 L18 40 M28 18 L32 28 L28 28 L30 40" fill="none" stroke="#C78BA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="24" cy="24" r="18" fill="none" stroke="#4A5D6B" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.4"/>
+                    </svg>
                 </div>
-                <div class="vertical-card">
-                    <div class="vertical-icon">
-                        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="24,8 40,20 40,36 24,44 8,36 8,20" fill="none" stroke="#C9A84C" stroke-width="2"/>
-                            <polygon points="24,14 34,22 34,34 24,40 14,34 14,22" fill="none" stroke="#C9A84C" stroke-width="1"/>
-                        </svg>
-                    </div>
-                    <h3>Defense</h3>
-                    <p>Air-gapped intelligence systems for classified environments. Hardware-bound AI that meets CMMC and ITAR requirements.</p>
-                    <span class="vertical-tag">Classified Ready</span>
+                <h3 class="card-title">Healthcare</h3>
+                <p class="card-desc">Patient data stays within facility walls. HIPAA compliance by architecture, not policy. Intelligence without exposure.</p>
+            </div>
+            <div class="vertical-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 38 L24 10 L36 38 Z" fill="none" stroke="#C78BA0" stroke-width="2" stroke-linejoin="round"/>
+                        <line x1="18" y1="28" x2="30" y2="28" stroke="#C78BA0" stroke-width="1.5"/>
+                        <circle cx="24" cy="20" r="3" fill="#C78BA0" opacity="0.6"/>
+                    </svg>
                 </div>
+                <h3 class="card-title">Defense</h3>
+                <p class="card-desc">Air-gapped intelligence for classified environments. Zero-trust execution where failure is not an option.</p>
+            </div>
+            <div class="vertical-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="14" y="12" width="20" height="26" rx="2" fill="none" stroke="#C78BA0" stroke-width="2"/>
+                        <line x1="18" y1="18" x2="30" y2="18" stroke="#4A5D6B" stroke-width="1" opacity="0.6"/>
+                        <line x1="18" y1="22" x2="28" y2="22" stroke="#4A5D6B" stroke-width="1" opacity="0.6"/>
+                        <line x1="18" y1="26" x2="26" y2="26" stroke="#4A5D6B" stroke-width="1" opacity="0.6"/>
+                        <line x1="18" y1="30" x2="30" y2="30" stroke="#4A5D6B" stroke-width="1" opacity="0.6"/>
+                        <path d="M20 8 L20 12 M28 8 L28 12" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Law</h3>
+                <p class="card-desc">Privilege-preserving intelligence. Case analysis and document review that never touches a third-party server.</p>
+            </div>
+            <div class="vertical-card">
+                <div class="card-icon">
+                    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="12" y="16" width="24" height="18" rx="2" fill="none" stroke="#C78BA0" stroke-width="2"/>
+                        <path d="M18 16 L18 12 C18 9 21 7 24 7 C27 7 30 9 30 12 L30 16" fill="none" stroke="#C78BA0" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="24" cy="26" r="3" fill="#C78BA0" opacity="0.6"/>
+                        <line x1="24" y1="29" x2="24" y2="31" stroke="#C78BA0" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="card-title">Secure Private Data</h3>
+                <p class="card-desc">Enterprise data solutions where sovereignty is the product. No cloud. No leaks. No compromise.</p>
             </div>
         </div>
     </section>
 
-    <!-- The Sovereignty Grid -->
-    <section id="grid" class="sovereignty-grid">
-        <div class="section-container">
-            <p class="section-tag">The Architecture</p>
-            <h2 class="section-title">The Sovereignty Grid</h2>
-            <p class="section-subtitle">Hardware-bound local intelligence. No cloud. No compromise.</p>
-            <div class="grid-architecture">
-                <div class="arch-visual">
-                    <div class="arch-layer layer-5">
-                        <span class="layer-num">5</span>
-                        <span class="layer-name">Consciousness</span>
-                    </div>
-                    <div class="arch-layer layer-4">
-                        <span class="layer-num">4</span>
-                        <span class="layer-name">Orchestration</span>
-                    </div>
-                    <div class="arch-layer layer-3">
-                        <span class="layer-num">3</span>
-                        <span class="layer-name">Intelligence</span>
-                    </div>
-                    <div class="arch-layer layer-2">
-                        <span class="layer-num">2</span>
-                        <span class="layer-name">Memory</span>
-                    </div>
-                    <div class="arch-layer layer-1">
-                        <span class="layer-num">1</span>
-                        <span class="layer-name">Hardware</span>
-                    </div>
-                </div>
-                <div class="arch-details">
-                    <div class="arch-detail">
-                        <h4>MS-S1 Max Foundation</h4>
-                        <p>128GB RAM. Local inference. Physical sovereignty over every byte of data processed by your AI systems.</p>
-                    </div>
-                    <div class="arch-detail">
-                        <h4>5-Tier Intelligence Stack</h4>
-                        <p>From hardware to consciousness: each layer is owned, auditable, and under your complete organizational control.</p>
-                    </div>
-                    <div class="arch-detail">
-                        <h4>Department-Native Design</h4>
-                        <p>AI that learns from your institutional judgment. Familiar tools, trusted workflows, sovereign execution.</p>
-                    </div>
-                </div>
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="section-header">
+            <span class="section-label">ARCHITECTURE</span>
+            <h2 class="section-title">Sovereign Local<br>Artificial Intelligence</h2>
+            <p class="section-sub">Hardware-bound execution. Data that never leaves the building. Intelligence that operates in disconnected, remote, and hostile environments.</p>
+        </div>
+        <div class="arch-grid">
+            <div class="arch-block">
+                <span class="arch-num">01</span>
+                <h3>Locality</h3>
+                <p>All computation happens on-premise. Your models run on your iron. No API calls to distant servers, no data in transit to unknown endpoints.</p>
             </div>
+            <div class="arch-block">
+                <span class="arch-num">02</span>
+                <h3>Security</h3>
+                <p>Air-gapped capable. Encrypted at rest. Zero-trust by default. Intelligence that meets the most stringent compliance frameworks by architecture.</p>
+            </div>
+            <div class="arch-block">
+                <span class="arch-num">03</span>
+                <h3>Resilience</h3>
+                <p>The Seed Protocol: full operational capability without network connectivity. Designed for remote installations, harsh environments, and total communications blackout.</p>
+            </div>
+            <div class="arch-block">
+                <span class="arch-num">04</span>
+                <h3>Autonomy</h3>
+                <p>No vendor lock-in. No subscription dependency. Your system, your models, your updates. Sovereignty means no single point of external failure.</p>
+            </div>
+        </div>
+        <div class="arch-motto">
+            <p>"Data stays local, secure, sovereign, yours."</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="section-container">
-            <p class="section-tag">Begin</p>
-            <h2 class="section-title">Claim Your Sovereignty</h2>
-            <p class="section-subtitle">Ready to own your intelligence infrastructure? Let's build it together.</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-label">Business Inquiries</span>
-                        <a href="mailto:guy@sovereignai.llc" class="contact-value">guy@sovereignai.llc</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Headquarters</span>
-                        <span class="contact-value">Houston, Texas</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Entity</span>
-                        <span class="contact-value">SovereignAI LLC</span>
-                    </div>
-                </div>
-                <form class="contact-form" action="#" method="POST">
-                    <input type="text" placeholder="Name" class="form-input" required>
-                    <input type="email" placeholder="Email" class="form-input" required>
-                    <select class="form-input">
-                        <option value="" disabled selected>Select Vertical</option>
-                        <option value="energy">Energy</option>
-                        <option value="healthcare">Healthcare</option>
-                        <option value="defense">Defense</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <textarea placeholder="Tell us about your sovereignty needs" class="form-input form-textarea" rows="4"></textarea>
-                    <button type="submit" class="btn btn-primary btn-full">Request Partnership Brief</button>
-                </form>
-            </div>
+        <div class="contact-inner">
+            <h2 class="section-title">Begin the Conversation</h2>
+            <p class="contact-desc">Sovereignty starts with a decision. Reach out when you're ready to own your intelligence.</p>
+            <a href="mailto:guy@sovereignai.llc" class="contact-link">guy@sovereignai.llc</a>
         </div>
     </section>
 
-    <!-- Footer / The Jung Legacy -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="legacy">
-                <div class="legacy-mark">
-                    <svg class="legacy-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="4" y="4" width="32" height="32" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-                        <rect x="10" y="10" width="20" height="20" fill="none" stroke="#C9A84C" stroke-width="1"/>
-                        <rect x="16" y="16" width="8" height="8" fill="#C9A84C"/>
-                    </svg>
-                </div>
-                <p class="legacy-text">The Jung Legacy</p>
-                <p class="legacy-subtitle">Lineage since 1238. Building sovereignty for the next millennium.</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 4 L56 16 L56 36 C56 50 44 60 32 62 C20 60 8 50 8 36 L8 16 Z" 
+                          fill="none" stroke="#C78BA0" stroke-width="2" stroke-linejoin="round"/>
+                    <line x1="32" y1="54" x2="32" y2="24" stroke="#C78BA0" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="32" y1="40" x2="22" y2="34" stroke="#C78BA0" stroke-width="1" stroke-linecap="round"/>
+                    <line x1="32" y1="40" x2="42" y2="34" stroke="#C78BA0" stroke-width="1" stroke-linecap="round"/>
+                    <circle cx="32" cy="24" r="3" fill="#C78BA0"/>
+                    <circle cx="22" cy="34" r="2" fill="#C78BA0" opacity="0.7"/>
+                    <circle cx="42" cy="34" r="2" fill="#C78BA0" opacity="0.7"/>
+                </svg>
+                <span class="footer-wordmark">SOVEREIGNAI</span>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SovereignAI LLC. All rights reserved.</p>
-                <p class="footer-frequency">963 Hz</p>
+            <div class="footer-heritage">
+                <span class="heritage-line">Jung Lineage — Established 1238</span>
+                <span class="heritage-line">963 Hz Resonance</span>
+            </div>
+            <div class="footer-legal">
+                <span>© 2026 SovereignAI LLC. All rights reserved.</span>
             </div>
         </div>
     </footer>
