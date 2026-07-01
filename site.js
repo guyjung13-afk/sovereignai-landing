@@ -43,12 +43,19 @@
         observer.observe(el);
     });
 
-    // NAV BACKGROUND ON SCROLL
+    // FORM HANDLING - TIER 2
+    var form = document.getElementById('inquiry-form');
+    var submitBtn = document.getElementById('submit-btn');
+    var btnText = submitBtn.querySelector('.btn-text');
+    var btnSpinner = submitBtn.querySelector('.btn-spinner');
+    var formMessage = document.getElementById('form-message');
+
+    // NAV BACKGROUND ON SCROLL (refined)
     var nav = document.querySelector('nav');
     var scrolled = false;
     window.addEventListener('scroll', function() {
         if (window.scrollY > 60 && !scrolled) {
-            nav.style.borderBottomColor = 'rgba(142, 154, 175, 0.25)';
+            nav.style.borderBottomColor = 'rgba(212, 175, 55, 0.15)';
             scrolled = true;
         } else if (window.scrollY <= 60 && scrolled) {
             nav.style.borderBottomColor = '';

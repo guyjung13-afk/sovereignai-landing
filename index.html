@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SovereignAI — Your AI. Your Data. Your Privacy.</title>
-    <meta name="description" content="SovereignAI builds AI systems that organizations own and control. No cloud dependency. No data leaving the building. No vendor lock-in.">
+    <meta name="description" content="SovereignAI builds AI systems that organizations own and control. Hardware-rooted, air-gapped, zero cloud dependency. Department-Native Intelligence.">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="SovereignAI — Infrastructure Sovereignty">
+    <meta property="og:description" content="Your AI. Your Data. Your Privacy. Local intelligence with absolute operational sovereignty.">
+    <meta property="og:image" content="https://sovereignai.llc/sovereign_sigil_ultimate.svg">
+    <meta property="og:url" content="https://sovereignai.llc">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <meta name="theme-color" content="#05070A">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2L4 8v16l12 6 12-6V8L16 2z' fill='%2305070A' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Cpath d='M16 8v16M12 12h8M10 16h12M13 20h6' stroke='%238E9AAF' stroke-width='0.8' fill='none'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -237,7 +246,11 @@
             <p class="inquiry-intro">Begin the transition to Department-Native Intelligence.</p>
 
             <div class="inquiry-form">
-                <form action="mailto:guy@sovereignai.llc" method="post" enctype="text/plain">
+                <form id="inquiry-form" action="https://formsubmit.co/guy@sovereignai.llc" method="POST">
+                    <input type="hidden" name="_subject" value="New Sovereign Briefing Request">
+                    <input type="hidden" name="_next" value="https://sovereignai.llc?submitted=true">
+                    <input type="hidden" name="_captcha" value="false">
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
@@ -267,9 +280,15 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Briefing Requirements</label>
-                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Specific technical discovery objectives..."></textarea>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="Specific technical discovery objectives, timeline, or questions..."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Schedule Technical Discovery Call</button>
+                    
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        <span class="btn-text">Schedule Technical Discovery Call</span>
+                        <span class="btn-spinner" style="display:none;">⟳</span>
+                    </button>
+                    
+                    <div id="form-message" class="form-message" style="display:none; margin-top:1.5rem; padding:1rem; border-radius:3px; text-align:center; font-family:var(--font-mono); font-size:0.85rem;"></div>
                 </form>
             </div>
         </div>
@@ -279,19 +298,19 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-col">
-                <span class="footer-lineage">Jung Lineage — <span class="gold">Established 1238</span></span>
-                <span class="footer-lineage">&copy; 2026 SovereignAI LLC. All rights reserved.</span>
+                <span class="footer-lineage">SovereignAI LLC</span>
+                <span class="footer-lineage">&copy; 2026 All rights reserved.</span>
             </div>
             <div class="footer-col">
                 <div class="footer-links">
-                    <a href="privacy.html">Privacy</a>
-                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                     <a href="manifesto.html">Manifesto</a>
                     <a href="mailto:guy@sovereignai.llc">Contact</a>
                 </div>
             </div>
         </div>
-        <p class="footer-resonance">963 Hz Resonance &mdash; Sovereign Frequency</p>
+        <p class="footer-resonance">Department-Native Intelligence • Absolute Sovereignty</p>
     </footer>
 
     <script src="site.js"></script>
