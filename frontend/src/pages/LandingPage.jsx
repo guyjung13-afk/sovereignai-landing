@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -16,47 +16,81 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import SovereignSigil from "../components/SovereignSigil";
+import ScrambleText from "../components/ScrambleText";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import useReveal from "../hooks/useReveal";
+import useParallax from "../hooks/useParallax";
+
+const API_BASE = process.env.REACT_APP_BACKEND_URL;
+const SOVEREIGN_KEY = process.env.REACT_APP_SOVEREIGN_KEY;
 
 const LandingPage = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [formStatus, setFormStatus] = useState("AWAITING TRANSMISSION");
   const [statusOk, setStatusOk] = useState(false);
+  const [transmitting, setTransmitting] = useState(false);
+  const sigilRef = useRef(null);
 
+  useReveal();
+  useParallax();
+
+  // Weighted spring rotation — the sigil carries physical inertia on scroll
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    let cur = 0;
+    let vel = 0;
+    let raf;
+    const tick = () => {
+      const target = Math.min(window.scrollY * 0.03, 14);
+      vel += (target - cur) * 0.016;
+      vel *= 0.9;
+      cur += vel;
+      if (sigilRef.current) {
+        sigilRef.current.style.transform = `rotate(${cur.toFixed(3)}deg)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
-  // Reveal on scroll
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("in");
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus("TRANSMITTING…");
+    if (transmitting) return;
+    const form = e.target;
+    const fd = new FormData(form);
+    setTransmitting(true);
     setStatusOk(false);
-    setTimeout(() => {
-      setFormStatus("BRIEFING QUEUED · SECURE CHANNEL OPEN");
-      setStatusOk(true);
-      e.target.reset();
-    }, 1200);
+    setFormStatus("TRANSMITTING…");
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/briefing`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Sovereign-Key": SOVEREIGN_KEY,
+        },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          org: fd.get("org"),
+          role: fd.get("role"),
+          sector: fd.get("sector"),
+          requirements: fd.get("brief"),
+        }),
+      });
+      if (res.status === 429) {
+        setFormStatus("CHANNEL SATURATED · STAND BY");
+      } else if (!res.ok) {
+        setFormStatus("TRANSMISSION FAILED · RETRY");
+      } else {
+        setFormStatus("TRANSMISSION SUCCESSFUL · BRIEFING QUEUED");
+        setStatusOk(true);
+        form.reset();
+      }
+    } catch {
+      setFormStatus("SIGNAL LOST · CHECK PERIMETER");
+    } finally {
+      setTransmitting(false);
+    }
   };
-
-  // Scroll-driven micro rotation of the sigil (up to ~6° for tactile 3D depth)
-  const sigilRotation = Math.min(scrollY * 0.02, 6);
 
   return (
     <>
@@ -85,18 +119,20 @@ const LandingPage = () => {
               Absolute operational sovereignty.
             </p>
             <div className="hero-actions">
-              <a href="#inquiry" className="btn" onClick={(e) => { e.preventDefault(); document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth" }); }}>
+              <a href="#inquiry" className="btn" data-testid="hero-discovery-btn" onClick={(e) => { e.preventDefault(); document.getElementById("inquiry")?.scrollIntoView({ behavior: "smooth" }); }}>
                 Request Technical Discovery
                 <ArrowRight size={14} className="arrow" />
               </a>
-              <Link to="/manifesto" className="btn btn-ghost">
+              <Link to="/manifesto" className="btn btn-ghost" data-testid="hero-manifesto-btn">
                 Read Manifesto
                 <ArrowUpRight size={14} className="arrow" />
               </Link>
             </div>
           </div>
-          <div className="sigil-wrap">
-            <SovereignSigil scrollRotation={sigilRotation} />
+          <div className="sigil-wrap" data-parallax="0.05">
+            <div ref={sigilRef} className="sigil-spring">
+              <SovereignSigil />
+            </div>
           </div>
         </div>
 
@@ -113,7 +149,10 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">System Substrate</span>
           </div>
-          <h2 className="section-title reveal">Department-Native <span className="gold">Intelligence Engine</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="Department-Native " />
+            <span className="gold"><ScrambleText text="Intelligence Engine" /></span>
+          </h2>
           <p className="section-lead reveal">
             Hardware-rooted attestation. Cryptographic isolation. Deterministic performance
             on air-gapped infrastructure. Our architecture treats the network perimeter as an
@@ -147,19 +186,23 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">Architecture</span>
           </div>
-          <h2 className="section-title reveal">The Sovereign <span className="gold">Flow</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="The Sovereign " />
+            <span className="gold"><ScrambleText text="Flow" /></span>
+          </h2>
           <p className="section-lead reveal">
             Four physical modules. One doctrine. Each state operates as an independent server-class module with hardware-rooted attestation and status-sovereign LED signaling.
           </p>
 
-          <div className="module-grid reveal">
+          <div className="module-grid interlock" data-testid="module-grid">
+            <div className="seam" />
             {[
-              { idx: "01", title: "Perimeter Lock", desc: "Data stays inside your jurisdictional boundary. Zero transit. Zero exfiltration surface.", tag: "VAULT", icon: <Lock size={18} /> },
-              { idx: "02", title: "Local Runtime", desc: "Models execute on your bare-metal hardware. No cloud dependency, no vendor-controlled context.", tag: "SPIRE", icon: <Zap size={18} /> },
-              { idx: "03", title: "Full Audit", desc: "Agents operate with complete local traceability. Deterministic logic replay for every decision.", tag: "ENCLAVE", icon: <Activity size={18} /> },
-              { idx: "04", title: "Autonomy", desc: "Zero external dependencies. Continued operation in total disconnection. Sovereign under siege.", tag: "CITADEL", icon: <Shield size={18} /> },
+              { idx: "01", title: "Perimeter Lock", desc: "Data stays inside your jurisdictional boundary. Zero transit. Zero exfiltration surface.", tag: "VAULT", icon: <Lock size={18} />, depth: "0.030" },
+              { idx: "02", title: "Local Runtime", desc: "Models execute on your bare-metal hardware. No cloud dependency, no vendor-controlled context.", tag: "SPIRE", icon: <Zap size={18} />, depth: "0.055" },
+              { idx: "03", title: "Full Audit", desc: "Agents operate with complete local traceability. Deterministic logic replay for every decision.", tag: "ENCLAVE", icon: <Activity size={18} />, depth: "0.040" },
+              { idx: "04", title: "Autonomy", desc: "Zero external dependencies. Continued operation in total disconnection. Sovereign under siege.", tag: "CITADEL", icon: <Shield size={18} />, depth: "0.065" },
             ].map((m) => (
-              <div key={m.idx} className="module-block">
+              <div key={m.idx} className="module-block" data-parallax={m.depth} data-testid={`module-block-${m.tag.toLowerCase()}`}>
                 <div className="module-header">
                   <span className="module-index">{m.idx}</span>
                   <span className="led"><span className="led-dot" />ONLINE</span>
@@ -183,7 +226,10 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">Deployment Domains</span>
           </div>
-          <h2 className="section-title reveal">Industries We <span className="gold">Fortify</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="Industries We " />
+            <span className="gold"><ScrambleText text="Fortify" /></span>
+          </h2>
           <p className="section-lead reveal">
             Purpose-built AI deployments for sectors where data sovereignty is not optional. Every deployment is configured for the organization's specific operational DNA.
           </p>
@@ -213,13 +259,16 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">Validation</span>
           </div>
-          <h2 className="section-title reveal">Active <span className="gold">Deployments</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="Active " />
+            <span className="gold"><ScrambleText text="Deployments" /></span>
+          </h2>
           <p className="section-lead reveal">
             Proving the Sovereign model across high-stakes industrial environments where irreversibility and cost of failure are absolute.
           </p>
 
-          <div className="deployment-grid reveal">
-            <div className="deployment-card corner-frame">
+          <div className="deployment-grid">
+            <div className="deployment-card corner-frame reveal from-left">
               <div className="tag">Live Pilot · Energy Sector</div>
               <h4>Energy Operations</h4>
               <p>
@@ -228,7 +277,7 @@ const LandingPage = () => {
                 position, and counterparty data resident on-premise.
               </p>
             </div>
-            <div className="deployment-card corner-frame">
+            <div className="deployment-card corner-frame reveal from-right">
               <div className="tag">Live Pilot · Professional Services</div>
               <h4>Privileged Intelligence</h4>
               <p>
@@ -260,7 +309,10 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">The Doctrine</span>
           </div>
-          <h2 className="section-title reveal">The Sovereign <span className="gold">Manifesto</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="The Sovereign " />
+            <span className="gold"><ScrambleText text="Manifesto" /></span>
+          </h2>
 
           <div className="manifesto-block reveal corner-frame">
             <span className="quote-mark">“</span>
@@ -271,7 +323,7 @@ const LandingPage = () => {
               trust, authority, and accountability where decisions are irreversible.
             </p>
             <div className="actions">
-              <Link to="/manifesto" className="btn">
+              <Link to="/manifesto" className="btn" data-testid="doctrine-manifesto-btn">
                 Read the Full Manifesto
                 <ArrowRight size={14} className="arrow" />
               </Link>
@@ -286,12 +338,16 @@ const LandingPage = () => {
           <div className="section-eyebrow reveal">
             <span className="eyebrow">Engagement</span>
           </div>
-          <h2 className="section-title reveal">Request Sovereign <span className="gold">Briefing</span></h2>
+          <h2 className="section-title reveal">
+            <ScrambleText text="Request Sovereign " />
+            <span className="gold"><ScrambleText text="Briefing" /></span>
+          </h2>
           <p className="section-lead reveal">
             Begin the transition to Department-Native Intelligence. All communications route through a hardened intake channel.
           </p>
 
-          <div className="form-terminal reveal">
+          <div className="form-terminal interlock" data-testid="briefing-terminal">
+            <div className="seam" />
             <div className="form-terminal-header">
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <Terminal size={14} />
@@ -303,25 +359,25 @@ const LandingPage = () => {
                 <span />
               </div>
             </div>
-            <form onSubmit={handleSubmit} className="form-body">
+            <form onSubmit={handleSubmit} className="form-body" data-testid="briefing-form">
               <div className="form-row">
                 <div className="form-field">
                   <label>Full Name</label>
-                  <input type="text" name="name" placeholder="Enter designation" required />
+                  <input type="text" name="name" placeholder="Enter designation" required data-testid="briefing-name-input" />
                 </div>
                 <div className="form-field">
                   <label>Organization</label>
-                  <input type="text" name="org" placeholder="Institutional entity" required />
+                  <input type="text" name="org" placeholder="Institutional entity" required data-testid="briefing-org-input" />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-field">
                   <label>Role</label>
-                  <input type="text" name="role" placeholder="Position of authority" required />
+                  <input type="text" name="role" placeholder="Position of authority" required data-testid="briefing-role-input" />
                 </div>
                 <div className="form-field">
                   <label>Use Case / Sector</label>
-                  <select name="sector" required defaultValue="">
+                  <select name="sector" required defaultValue="" data-testid="briefing-sector-select">
                     <option value="" disabled>Select Domain</option>
                     <option value="energy">Energy</option>
                     <option value="defense">Defense</option>
@@ -334,15 +390,15 @@ const LandingPage = () => {
               <div className="form-row" style={{ gridTemplateColumns: "1fr" }}>
                 <div className="form-field">
                   <label>Briefing Requirements</label>
-                  <textarea name="brief" placeholder="Describe operational context, jurisdictional constraints, and sovereignty requirements…" required />
+                  <textarea name="brief" placeholder="Describe operational context, jurisdictional constraints, and sovereignty requirements…" required data-testid="briefing-requirements-textarea" />
                 </div>
               </div>
               <div className="form-submit">
-                <div className={`form-status ${statusOk ? "ok" : ""}`}>
+                <div className={`form-status ${statusOk ? "ok" : ""}`} data-testid="briefing-status">
                   {statusOk && <span style={{ marginRight: 10 }}>✓</span>}
                   {formStatus}
                 </div>
-                <button type="submit" className="btn">
+                <button type="submit" className="btn" disabled={transmitting} data-testid="briefing-submit-btn">
                   Schedule Technical Discovery
                   <ArrowRight size={14} className="arrow" />
                 </button>

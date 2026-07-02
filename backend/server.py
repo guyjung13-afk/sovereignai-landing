@@ -1,12 +1,13 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Header
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
+import time
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 
@@ -36,6 +37,48 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+
+class BriefingCreate(BaseModel):
+    name: str = Field(min_length=1, max_length=200)
+    org: str = Field(min_length=1, max_length=200)
+    role: str = Field(min_length=1, max_length=200)
+    sector: str = Field(min_length=1, max_length=100)
+    requirements: str = Field(min_length=1, max_length=5000)
+
+
+RATE_WINDOW_SECONDS = 60
+RATE_MAX_REQUESTS = 5
+_rate_registry: dict = {}
+
+
+def _check_rate_limit(ip: str):
+    now = time.time()
+    hits = [t for t in _rate_registry.get(ip, []) if now - t < RATE_WINDOW_SECONDS]
+    if len(hits) >= RATE_MAX_REQUESTS:
+        raise HTTPException(status_code=429, detail="CHANNEL SATURATED — RATE LIMIT EXCEEDED")
+    hits.append(now)
+    _rate_registry[ip] = hits
+
+
+@api_router.post("/v1/briefing")
+async def create_briefing(
+    payload: BriefingCreate,
+    request: Request,
+    x_sovereign_key: Optional[str] = Header(default=None),
+):
+    if x_sovereign_key != os.environ['SOVEREIGN_KEY']:
+        raise HTTPException(status_code=401, detail="INVALID SOVEREIGN KEY")
+    forwarded = request.headers.get("x-forwarded-for")
+    ip = forwarded.split(",")[0].strip() if forwarded else (request.client.host if request.client else "unknown")
+    _check_rate_limit(ip)
+    doc = payload.model_dump()
+    doc["id"] = str(uuid.uuid4())
+    doc["timestamp"] = datetime.now(timezone.utc).isoformat()
+    doc["origin_ip"] = ip
+    await db.briefings.insert_one({**doc})
+    return {"status": "QUEUED", "id": doc["id"]}
+
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")

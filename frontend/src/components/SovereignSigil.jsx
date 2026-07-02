@@ -6,13 +6,12 @@ import React from "react";
  * neural nodes at cardinal points, and a central pulse core.
  * Designed for the "Sovereign-Industrial" doctrine.
  */
-const SovereignSigil = ({ scrollRotation = 0 }) => {
+const SovereignSigil = () => {
   return (
     <svg
       className="sigil-svg"
       viewBox="0 0 400 400"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ transform: `rotate(${scrollRotation}deg)` }}
     >
       <defs>
         <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
@@ -125,7 +124,7 @@ const SovereignSigil = ({ scrollRotation = 0 }) => {
       {/* Central emblem: interlocked S */}
       <g filter="url(#pulseCore)">
         <path
-          d="M 185 185 Q 185 175 195 175 L 215 175 Q 225 175 225 185 Q 225 195 215 195 L 195 195 Q 185 195 185 205 Q 185 215 195 215 L 215 215 Q 225 215 225 225"
+          d="M 225 185 Q 225 175 215 175 L 195 175 Q 185 175 185 185 Q 185 195 195 195 L 215 195 Q 225 195 225 205 Q 225 215 215 215 L 195 215 Q 185 215 185 225"
           fill="none"
           stroke="#D4AF37"
           strokeWidth="2.2"
