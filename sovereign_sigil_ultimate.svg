@@ -18,25 +18,38 @@
       </feMerge>
     </filter>
   </defs>
+
+  <!-- Outer dashed ring -->
   <circle cx="200" cy="200" r="188" fill="none" stroke="#8E9AAF" stroke-width="1" stroke-dasharray="1 6" opacity="0.4"/>
+  <!-- Outer solid ring -->
   <circle cx="200" cy="200" r="170" fill="none" stroke="url(#steelGrad)" stroke-width="1.5" opacity="0.85"/>
+  
+  <!-- Tick ring (60 ticks) -->
   <g id="ticks" opacity="0.6">
     <line x1="370" y1="200" x2="358" y2="200" stroke="#8E9AAF" stroke-width="1.2"/>
     <line x1="200" y1="30" x2="200" y2="42" stroke="#8E9AAF" stroke-width="1.2"/>
     <line x1="30" y1="200" x2="42" y2="200" stroke="#8E9AAF" stroke-width="1.2"/>
     <line x1="200" y1="370" x2="200" y2="358" stroke="#8E9AAF" stroke-width="1.2"/>
   </g>
+
+  <!-- Cardinal labels -->
   <text x="200" y="20" text-anchor="middle" fill="#D4AF37" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">N</text>
   <text x="200" y="390" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">S</text>
   <text x="12" y="204" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">W</text>
   <text x="388" y="204" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">E</text>
+
+  <!-- Inner ring -->
   <circle cx="200" cy="200" r="140" fill="none" stroke="#8E9AAF" stroke-width="1" opacity="0.5"/>
+
+  <!-- Hex Fortress -->
   <polygon points="200,70 313,135 313,265 200,330 87,265 87,135" fill="none" stroke="url(#steelGrad)" stroke-width="2" opacity="0.9"/>
   <polygon points="200,110 278,155 278,245 200,290 122,245 122,155" fill="none" stroke="#8E9AAF" stroke-width="1" opacity="0.55"/>
   <line x1="200" y1="70" x2="200" y2="330" stroke="#8E9AAF" stroke-width="0.8" opacity="0.35"/>
   <line x1="87" y1="200" x2="313" y2="200" stroke="#8E9AAF" stroke-width="0.8" opacity="0.35"/>
   <line x1="120" y1="120" x2="280" y2="280" stroke="#8E9AAF" stroke-width="0.6" opacity="0.25"/>
   <line x1="280" y1="120" x2="120" y2="280" stroke="#8E9AAF" stroke-width="0.6" opacity="0.25"/>
+
+  <!-- Neural Nodes (outer hex vertices) -->
   <g>
     <circle cx="200" cy="70" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
     <circle cx="200" cy="70" r="2" fill="#D4AF37"/>
@@ -51,21 +64,37 @@
     <circle cx="87" cy="135" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
     <circle cx="87" cy="135" r="2" fill="#D4AF37"/>
   </g>
+
+  <!-- Inner nodes -->
   <circle cx="200" cy="110" r="3" fill="#8E9AAF" opacity="0.8"/>
   <circle cx="278" cy="200" r="3" fill="#8E9AAF" opacity="0.8"/>
   <circle cx="200" cy="290" r="3" fill="#8E9AAF" opacity="0.8"/>
   <circle cx="122" cy="200" r="3" fill="#8E9AAF" opacity="0.8"/>
+
+  <!-- Core Emblem -->
   <circle cx="200" cy="200" r="60" fill="url(#coreGlow)" opacity="0.9"/>
   <circle cx="200" cy="200" r="38" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.85"/>
   <circle cx="200" cy="200" r="26" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.55"/>
+  
+  <!-- The S-Curve: Standard-flow — the signature of integrity -->
   <g filter="url(#pulseCore)">
-    <path d="M 225 185 Q 225 175, 215 175 L 195 175 Q 185 175, 185 185 Q 185 195, 195 195 L 215 195 Q 225 195, 225 205 Q 225 215, 215 215 L 195 215 Q 185 215, 185 225" fill="none" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round"/>
+    <path
+      d="M 225 185 Q 225 175, 215 175 L 195 175 Q 185 175, 185 185 Q 185 195, 195 195 L 215 195 Q 225 195, 225 205 Q 225 215, 215 215 L 195 215 Q 185 215, 185 225"
+      fill="none"
+      stroke="#D4AF37"
+      stroke-width="2.2"
+      stroke-linecap="round"
+    />
     <circle cx="200" cy="200" r="3" fill="#D4AF37"/>
   </g>
+
+  <!-- Micro text ring (rotating) -->
   <g>
     <path id="microTextPath" d="M 200,200 m -155,0 a 155,155 0 1,1 310,0 a 155,155 0 1,1 -310,0" fill="none"/>
     <text font-size="7" font-family="'JetBrains Mono', monospace" fill="#8E9AAF" letter-spacing="4" opacity="0.75">
-      <textPath href="#microTextPath" startOffset="0">SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY · SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY ·</textPath>
+      <textPath href="#microTextPath" startOffset="0">
+        SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY · SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY ·
+      </textPath>
     </text>
   </g>
 </svg>
