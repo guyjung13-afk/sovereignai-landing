@@ -1,40 +1,71 @@
-<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- 1. THE MONOLITH BOUNDARY (Cold Steel) -->
-    <path d="M 50 8 L 88 28 V 72 L 50 92 L 12 72 V 28 Z" stroke="#8E9AAF" stroke-width="3" opacity="0.4"/>
-    
-    <!-- 2. THE LATTICE INFRASTRUCTURE (Steel & Gold) -->
-    <g opacity="0.6">
-      <path d="M 12 28 L 88 72 M 88 28 L 12 72" stroke="#8E9AAF" stroke-width="1" opacity="0.2"/>
-      <path d="M 50 8 V 92 M 12 50 H 88" stroke="#8E9AAF" stroke-width="1" opacity="0.2"/>
-      
-      <g transform="translate(50 50)">
-        <rect x="-35" y="-35" width="70" height="70" transform="rotate(15)" stroke="#8E9AAF" stroke-width="0.8" opacity="0.3"/>
-        <rect x="-30" y="-30" width="60" height="60" transform="rotate(35)" stroke="#8E9AAF" stroke-width="0.8" opacity="0.4"/>
-        <rect x="-25" y="-25" width="50" height="50" transform="rotate(55)" stroke="#D4AF37" stroke-width="1.5" opacity="0.7"/>
-        <rect x="-20" y="-20" width="40" height="40" transform="rotate(75)" stroke="#D4AF37" stroke-width="2.5"/>
-      </g>
-    </g>
-
-    <!-- 3. THE NEURAL CORE (High-Density Gold) -->
-    <g transform="translate(50 50)">
-      <circle cx="0" cy="0" r="5" fill="#D4AF37" stroke="none"/>
-      <g fill="#D4AF37">
-        <circle cx="0" cy="-12" r="2.5"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(40)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(80)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(120)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(160)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(200)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(240)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(280)"/>
-        <circle cx="0" cy="-12" r="2.5" transform="rotate(320)"/>
-      </g>
-      <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
-      <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(80)"/>
-      <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(160)"/>
-      <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(240)"/>
-      <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(320)"/>
-    </g>
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#D4AF37" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8E9AAF"/>
+      <stop offset="50%" stop-color="#B5BFCF"/>
+      <stop offset="100%" stop-color="#5B6577"/>
+    </linearGradient>
+    <filter id="pulseCore" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="200" cy="200" r="188" fill="none" stroke="#8E9AAF" stroke-width="1" stroke-dasharray="1 6" opacity="0.4"/>
+  <circle cx="200" cy="200" r="170" fill="none" stroke="url(#steelGrad)" stroke-width="1.5" opacity="0.85"/>
+  <g id="ticks" opacity="0.6">
+    <line x1="370" y1="200" x2="358" y2="200" stroke="#8E9AAF" stroke-width="1.2"/>
+    <line x1="200" y1="30" x2="200" y2="42" stroke="#8E9AAF" stroke-width="1.2"/>
+    <line x1="30" y1="200" x2="42" y2="200" stroke="#8E9AAF" stroke-width="1.2"/>
+    <line x1="200" y1="370" x2="200" y2="358" stroke="#8E9AAF" stroke-width="1.2"/>
+  </g>
+  <text x="200" y="20" text-anchor="middle" fill="#D4AF37" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">N</text>
+  <text x="200" y="390" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">S</text>
+  <text x="12" y="204" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">W</text>
+  <text x="388" y="204" text-anchor="middle" fill="#8E9AAF" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="3">E</text>
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#8E9AAF" stroke-width="1" opacity="0.5"/>
+  <polygon points="200,70 313,135 313,265 200,330 87,265 87,135" fill="none" stroke="url(#steelGrad)" stroke-width="2" opacity="0.9"/>
+  <polygon points="200,110 278,155 278,245 200,290 122,245 122,155" fill="none" stroke="#8E9AAF" stroke-width="1" opacity="0.55"/>
+  <line x1="200" y1="70" x2="200" y2="330" stroke="#8E9AAF" stroke-width="0.8" opacity="0.35"/>
+  <line x1="87" y1="200" x2="313" y2="200" stroke="#8E9AAF" stroke-width="0.8" opacity="0.35"/>
+  <line x1="120" y1="120" x2="280" y2="280" stroke="#8E9AAF" stroke-width="0.6" opacity="0.25"/>
+  <line x1="280" y1="120" x2="120" y2="280" stroke="#8E9AAF" stroke-width="0.6" opacity="0.25"/>
+  <g>
+    <circle cx="200" cy="70" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="200" cy="70" r="2" fill="#D4AF37"/>
+    <circle cx="313" cy="135" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="313" cy="135" r="2" fill="#D4AF37"/>
+    <circle cx="313" cy="265" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="313" cy="265" r="2" fill="#D4AF37"/>
+    <circle cx="200" cy="330" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="200" cy="330" r="2" fill="#D4AF37"/>
+    <circle cx="87" cy="265" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="87" cy="265" r="2" fill="#D4AF37"/>
+    <circle cx="87" cy="135" r="6" fill="#05070A" stroke="#D4AF37" stroke-width="1.4"/>
+    <circle cx="87" cy="135" r="2" fill="#D4AF37"/>
+  </g>
+  <circle cx="200" cy="110" r="3" fill="#8E9AAF" opacity="0.8"/>
+  <circle cx="278" cy="200" r="3" fill="#8E9AAF" opacity="0.8"/>
+  <circle cx="200" cy="290" r="3" fill="#8E9AAF" opacity="0.8"/>
+  <circle cx="122" cy="200" r="3" fill="#8E9AAF" opacity="0.8"/>
+  <circle cx="200" cy="200" r="60" fill="url(#coreGlow)" opacity="0.9"/>
+  <circle cx="200" cy="200" r="38" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.85"/>
+  <circle cx="200" cy="200" r="26" fill="none" stroke="#D4AF37" stroke-width="0.8" opacity="0.55"/>
+  <g filter="url(#pulseCore)">
+    <path d="M 225 185 Q 225 175, 215 175 L 195 175 Q 185 175, 185 185 Q 185 195, 195 195 L 215 195 Q 225 195, 225 205 Q 225 215, 215 215 L 195 215 Q 185 215, 185 225" fill="none" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="200" cy="200" r="3" fill="#D4AF37"/>
+  </g>
+  <g>
+    <path id="microTextPath" d="M 200,200 m -155,0 a 155,155 0 1,1 310,0 a 155,155 0 1,1 -310,0" fill="none"/>
+    <text font-size="7" font-family="'JetBrains Mono', monospace" fill="#8E9AAF" letter-spacing="4" opacity="0.75">
+      <textPath href="#microTextPath" startOffset="0">SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY · SOVEREIGN · LOCAL · INTELLIGENCE · PERIMETER · ABSOLUTE · AUTHORITY ·</textPath>
+    </text>
   </g>
 </svg>
