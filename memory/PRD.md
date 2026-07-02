@@ -30,3 +30,11 @@ User choices: raw GLSL (no libs), pure rAF momentum scroll (no Lenis), live back
 - P2: Admin read endpoint/UI for briefings in preview backend (Mongo)
 - P2: Email notification (e.g., Resend) on new briefing
 - P2: Meta/OG tags + favicon for shareability
+
+## Code Quality Refactor (June 2026, iteration_2.json: 100% regression pass)
+- LandingPage.jsx split into `components/landing/` sections (Hero, Substrate, Architecture, Verticals, Validation, HardwareGrid, Doctrine, BriefingTerminal, SectionHeading)
+- ManifestoPage data-driven (SECTIONS array); SovereignSigil decomposed into subcomponents
+- ScrambleText/ResonantField/useMomentumScroll logic extracted to module-level helpers (complexity reduced)
+- server.py + tests/test_briefing.py fully type-hinted
+- Note: hooks intentionally use mount-only `[]` deps with effect-local state (linter false positives); no console statements exist
+
