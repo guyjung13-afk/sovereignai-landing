@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Load Inter and JetBrains Mono via system-first + fallback stack.
+   Per constraint: no Google Fonts. Rely on system installations with graceful fallback. */
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: #05070A;
+  color: #EAE2D6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
