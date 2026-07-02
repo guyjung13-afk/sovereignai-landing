@@ -7,7 +7,7 @@ import time
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Optional
+from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
 
@@ -50,10 +50,10 @@ class BriefingCreate(BaseModel):
 
 RATE_WINDOW_SECONDS = 60
 RATE_MAX_REQUESTS = 5
-_rate_registry: dict = {}
+_rate_registry: Dict[str, List[float]] = {}
 
 
-def _check_rate_limit(ip: str):
+def _check_rate_limit(ip: str) -> None:
     now = time.time()
     hits = [t for t in _rate_registry.get(ip, []) if now - t < RATE_WINDOW_SECONDS]
     if len(hits) >= RATE_MAX_REQUESTS:
@@ -67,7 +67,7 @@ async def create_briefing(
     payload: BriefingCreate,
     request: Request,
     x_sovereign_key: Optional[str] = Header(default=None),
-):
+) -> Dict[str, str]:
     if x_sovereign_key != SOVEREIGN_KEY:
         raise HTTPException(status_code=401, detail="INVALID SOVEREIGN KEY")
     forwarded = request.headers.get("x-forwarded-for")
@@ -83,11 +83,11 @@ async def create_briefing(
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
-async def root():
+async def root() -> Dict[str, str]:
     return {"message": "Hello World"}
 
 @api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
+async def create_status_check(input: StatusCheckCreate) -> StatusCheck:
     status_dict = input.model_dump()
     status_obj = StatusCheck(**status_dict)
     
@@ -99,7 +99,7 @@ async def create_status_check(input: StatusCheckCreate):
     return status_obj
 
 @api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
+async def get_status_checks() -> List[StatusCheck]:
     # Exclude MongoDB's _id field from the query results
     status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
     
@@ -129,5 +129,5 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
-async def shutdown_db_client():
+async def shutdown_db_client() -> None:
     client.close()

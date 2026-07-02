@@ -36,6 +36,51 @@ void main() {
 }
 `;
 
+const initProgram = (gl) => {
+  const compile = (type, src) => {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  };
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  const aPos = gl.getAttribLocation(prog, "aPos");
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  gl.clearColor(5 / 255, 7 / 255, 10 / 255, 1);
+
+  return {
+    uRes: gl.getUniformLocation(prog, "uRes"),
+    uMouse: gl.getUniformLocation(prog, "uMouse"),
+    uTime: gl.getUniformLocation(prog, "uTime"),
+  };
+};
+
+const buildGrid = (gl, canvas, uRes, dpr) => {
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  const spacing = 30 * dpr;
+  const pts = [];
+  for (let y = spacing / 2; y < canvas.height; y += spacing) {
+    for (let x = spacing / 2; x < canvas.width; x += spacing) {
+      pts.push(x, y);
+    }
+  }
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pts), gl.STATIC_DRAW);
+  gl.uniform2f(uRes, canvas.width, canvas.height);
+  return pts.length / 2;
+};
+
 const ResonantField = () => {
   const canvasRef = useRef(null);
 
@@ -44,68 +89,21 @@ const ResonantField = () => {
     const gl = canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "low-power" });
     if (!gl) return;
 
-    const compile = (type, src) => {
-      const s = gl.createShader(type);
-      gl.shaderSource(s, src);
-      gl.compileShader(s);
-      return s;
-    };
-    const prog = gl.createProgram();
-    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
-    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
-    gl.linkProgram(prog);
-    gl.useProgram(prog);
-
-    const uRes = gl.getUniformLocation(prog, "uRes");
-    const uMouse = gl.getUniformLocation(prog, "uMouse");
-    const uTime = gl.getUniformLocation(prog, "uTime");
-    const aPos = gl.getAttribLocation(prog, "aPos");
-
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.enableVertexAttribArray(aPos);
-    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    gl.clearColor(5 / 255, 7 / 255, 10 / 255, 1);
-
+    const { uRes, uMouse, uTime } = initProgram(gl);
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    let count = 0;
-
-    const buildGrid = () => {
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      const spacing = 30 * dpr;
-      const pts = [];
-      for (let y = spacing / 2; y < canvas.height; y += spacing) {
-        for (let x = spacing / 2; x < canvas.width; x += spacing) {
-          pts.push(x, y);
-        }
-      }
-      count = pts.length / 2;
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pts), gl.STATIC_DRAW);
-      gl.uniform2f(uRes, canvas.width, canvas.height);
-    };
-    buildGrid();
+    let count = buildGrid(gl, canvas, uRes, dpr);
+    const onResize = () => { count = buildGrid(gl, canvas, uRes, dpr); };
 
     const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999 };
-    const onMove = (e) => {
-      mouse.tx = e.clientX * dpr;
-      mouse.ty = e.clientY * dpr;
-    };
-    const onLeave = () => {
-      mouse.tx = -9999;
-      mouse.ty = -9999;
-    };
+    const onMove = (e) => { mouse.tx = e.clientX * dpr; mouse.ty = e.clientY * dpr; };
+    const onLeave = () => { mouse.tx = -9999; mouse.ty = -9999; };
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseout", onLeave, { passive: true });
-    window.addEventListener("resize", buildGrid);
+    window.addEventListener("resize", onResize);
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = null;
     const start = performance.now();
+    let raf = null;
 
     const draw = (now) => {
       mouse.x += (mouse.tx - mouse.x) * 0.08;
@@ -122,7 +120,7 @@ const ResonantField = () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseout", onLeave);
-      window.removeEventListener("resize", buildGrid);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

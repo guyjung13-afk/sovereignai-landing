@@ -1,47 +1,51 @@
 import { useEffect } from "react";
 
+const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+const createScrollState = () => ({
+  target: window.scrollY,
+  current: window.scrollY,
+  raf: null,
+  active: false,
+});
+
 const useMomentumScroll = () => {
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let target = window.scrollY;
-    let current = window.scrollY;
-    let raf = null;
-    let active = false;
-
+    const s = createScrollState();
     const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
 
     const tick = () => {
-      current += (target - current) * 0.085;
-      if (Math.abs(target - current) < 0.5) {
-        current = target;
-        active = false;
+      s.current += (s.target - s.current) * 0.085;
+      if (Math.abs(s.target - s.current) < 0.5) {
+        s.current = s.target;
+        s.active = false;
       }
-      window.scrollTo(0, current);
-      if (active) raf = requestAnimationFrame(tick);
+      window.scrollTo(0, s.current);
+      if (s.active) s.raf = requestAnimationFrame(tick);
+    };
+
+    const syncToNative = () => {
+      s.target = window.scrollY;
+      s.current = window.scrollY;
     };
 
     const onWheel = (e) => {
       if (e.ctrlKey) return;
       e.preventDefault();
       const delta = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-      if (!active) {
-        target = window.scrollY;
-        current = window.scrollY;
-      }
-      target = Math.max(0, Math.min(maxScroll(), target + delta));
-      if (!active) {
-        active = true;
-        raf = requestAnimationFrame(tick);
+      if (!s.active) syncToNative();
+      s.target = clamp(s.target + delta, 0, maxScroll());
+      if (!s.active) {
+        s.active = true;
+        s.raf = requestAnimationFrame(tick);
       }
     };
 
     const onScroll = () => {
-      if (!active) {
-        target = window.scrollY;
-        current = window.scrollY;
-      }
+      if (!s.active) syncToNative();
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
@@ -49,7 +53,7 @@ const useMomentumScroll = () => {
     return () => {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("scroll", onScroll);
-      if (raf) cancelAnimationFrame(raf);
+      if (s.raf) cancelAnimationFrame(s.raf);
     };
   }, []);
 };
