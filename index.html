@@ -4,37 +4,278 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SovereignAI ‚Äî Your AI. Your Data. Your Privacy.</title>
+    <meta name="description" content="SovereignAI builds AI systems that organizations own and control. Hardware-rooted, air-gapped, zero cloud dependency. Department-Native Intelligence.">
+    <meta name="theme-color" content="#05070A">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2L4 8v16l12 6 12-6V8L16 2z' fill='%2305070A' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Cpath d='M16 8v16M12 12h8M10 16h12M13 20h6' stroke='%238E9AAF' stroke-width='0.8' fill='none'/%3E%3C/svg%3E">
     <style>
+        :root {
+            --obsidian: #05070A;
+            --obsidian-light: #0A0D12;
+            --steel: #A8B4C2;
+            --steel-dim: rgba(168, 180, 194, 0.12);
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #05070A;
+            background: var(--obsidian);
             color: #F4F4F4;
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .sigil {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 2rem;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
-        }
-        h1 { color: #D4AF37; font-size: 2.5rem; margin-bottom: 1rem; }
-        p { color: #8E9AAF; max-width: 600px; line-height: 1.6; padding: 0 1rem; }
-    </style>
+            font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: linear-gradient(var(--steel-dim) 1px, transparent 1px), linear-gradient(90deg, var(--steel-dim) 1px, transparent 1px);
+    background-size: 80px 80px; opacity: 0.1;
+}
+
+canvas#resonant-field {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; pointer-events: none; opacity: 0.3;
+}
+
+nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: prgba(5, 7, 10, 0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--steel-dim); padding: 1.25rem 2rem;
+}
+
+.nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: white; }
+.nav-links { display: flex; gap: 2.5rem; }
+.nav-links a { color: var(--steel); text-decoration: none; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+
+.hero {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; position: relative; z-index: 2; padding: 10rem 2rem 5rem;
+}
+
+.sigil-container {
+    width: clamp(180px, 30vw, 320px); height: clamp(180px, 30vw, 320px); margin-bottom: 3rem;
+    filter: drop-shadow(0 0 50px var(--gold-glow));
+    animation: pulse 4s ease-in-out infinite;
+    transition: transform 0.1s ease-out;
+}
+
+ keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.03); opacity: 1; } }
+
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin-bottom: 2rem; }
+h1 span.gold { color: var(--gold); text-shadow: 0 0 30px var(--gold-glow); }
+.subtitle { max-width: 700px; color: var(--steel); font-size: clamp(1rem, 2vw, 1.2rem); margin-bottom: 3rem; margin-left: auto; margin-right: auto; font-weight: 200; }
+
+.cta {
+    display: inline-block; padding: 1.25rem 3.5rem; border: 2px solid var(--gold);
+    color: var(--gold); font-family: var(--font-mono); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.2em; text-decoration: none;
+    transition: allÄ¿∏—ÃÏ)Ù(πç—ÑÈ°ΩŸï»ÅÏÅâÖç≠ù…Ω’πêËÅŸÖ»†¥µùΩ±ê§ÏÅçΩ±Ω»ËÅŸÖ»†¥µΩâÕ•ë•Ö∏§ÏÅâΩ‡µÕ°ÖëΩ‹ËÄ¿Ä¿Ä‘¡¡‡ÅŸÖ»†¥µùΩ±êµù±Ω‹§ÏÅÙ()Õïç—•Ω∏ÅÏÅ¡Öëë•πúËÄƒ¡…ï¥Ä……ï¥ÏÅ¡ΩÕ•—•Ω∏ËÅ¡…ï±Ö—•ŸîÏÅËµ•πëï‡ËÄ»ÏÅâΩ…ëï»µ—Ω¿ËÄ≈¡‡ÅÕΩ±•êÅŸÖ»†¥µÕ—ïï∞µë•¥§ÏÅÙ(πçΩπ—Ö•πï»ÅÏÅµÖ‡µ›•ë—†ËÄƒ»¿¡¡‡ÏÅµÖ…ù•∏ËÄ¿ÅÖ’—ºÏÅÙ(π±Öâï∞ÅÏÅçΩ±Ω»ËÅŸÖ»†¥µùΩ±ê§ÏÅôΩπ–µôÖµ•±‰ËÅŸÖ»†¥µôΩπ–µµΩπº§ÏÅôΩπ–µÕ•ÈîËÄ¿∏›…ï¥ÏÅ±ï——ï»µÕ¡Öç•πúËÄ¿∏—ï¥ÏÅ—ï·–µ—…ÖπÕôΩ…¥ËÅ’¡¡ï…çÖÕîÏÅµÖ…ù•∏µâΩ——Ω¥ËÄƒ∏’…ï¥ÏÅë•Õ¡±Ö‰ËÅâ±Ωç¨ÏÅÙ*h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 3rem; letter-spacing: -0.02em; }
+
+.module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+.module { background: var(--obsidian-light); border: 1px solid var(--steel-dim); padding: 3rem 2rem; position: relative; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.module:hover { border-color": var(--gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.led { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; display: inline-block; margin-right: 10px; box-shadow: 0 0 10px var(--gold); }
+.status { font-family: var(--font-mono); font-size: 0.65rem; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; }
+.module h3 { font-family: var(--font-mono); font-size: 1.5rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+.module p { color: var(--steel); font-size: 0.9rem; font-weight: 300; }
+
+.hw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
+.hw-card { border: 1px solid var(--steel-dim); padding: 2rem; text-align: center; background: rgba(168, 180, 194, 0.03); }
+.hw-card h4 { font-family: var(--font-mono); color: var(--gold); margin-bottom: 0.5rem; }
+
+.form-terminal { max-width: 900px; margin: 0 auto; background: #000; border: 1px solid var(--gold); padding: clamp(2rem, 8vw, 4rem); font-family: var(--font-mono); position: relative; }
+.form-terminal::before { content: 'CLANDESTINE_INTAKE_v1.0'; position: absolute; top: -10px; left: 20px; background: var(--obsidian); padding: 0 10px; color: var(--gold); font-size: 0.6rem; }
+.form-control { background: tranparent; border: none; border-bottom: 1px solid var(--steel-dim); color: white; width: 100%; padding: 1.25rem 0; margin-bottom: 2.5rem; outline: none; font-family: var(--font-mono); font-size: 1rem; transition: border-color 0.3s; }
+.form-control:focus { border-bottom-color: var(--gold); }
+.submit-btn { width: 100%; background: var(--gold); color: black; border: none; padding: 1.5rem; font-weight: 900; text-transform: uppercase; cursor: pointer; letter-spacing: 0.3em; transition: opacity 0.3s; }
+.submit-btn:hover { opacity: 0.9; }
+
+footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid var(--steel-dim); font-family: var(--font-mono); font-size: 0.75rem; color: var(--steel); letter-spacing: 0.2em; }
+
+.scramble-target { display: inline-block; min-height: 1.2em; }
+
+@media (max-width: 1024px) { .module-grid { grid-template-columns: repeat(2, 1fr); } .hw-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .module-grid { grid-template-columns: 1fr; } .hw-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+</style>
 </head>
 <body>
-    <div class="sigil">
-        <svg viewBox="0 0 1000 100" xmlns="http://www.w3.org/2000/svg">
-            <path d="M 50 8 L 88 28 V 72 L 50 92 L 12 72 V 28 Z" stroke="#D4AF37" stroke-width="4" fill="none"/>
-        </svg>
-    </div>
-    <h1>Your AI. Your Data. Your Privacy.</h1>
-    <p>Restoring high-fidelity shaders. The Citadel is operational.</p>
-    <p style="font-size: 0.8rem; margin-top: 2rem; opacity: 0.5;">963 Hz ‚Äî SovereignAI LLC</p>
+    <div class="grid-bg"></div>
+    <canvas id="resonant-field"></canvas>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 100 100">
+                    <path d="M 50 8 L 88 28 V 72 L 50 92 L 12 72 V 28 Z" stroke="#D4AF37" stroke-width="4" fill="none"/>
+                </svg>
+                <span style="font-family: var(--font-mono); font-weight: 700; letter-spacing: 0.2em; margin-left: 0.5rem;">SOVEREIGN<span style="color:var(--gold)">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#architecture">Architecture</a>
+                <a href="#hardware">Hardware</a>
+                <a href="#inquiry">Inquiry</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="sigil-container">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 50 8 L 88 28 V 72 L 50 92 L 12 72 V 28 Z" stroke="#8E9AAF" stroke-width="3" opacity="0.4"/>
+                <g opacity="0.6">
+                  <path d="M 12 28 L 88 72 M 88 28 L 12 72" stroke="#8E9AAF" stroke-width="1" opacity="0.2"/>
+                  <path d="M 50 8 V 92 M 12 50 H 88" stroke="#8E9AAF" stroke-width="1" opacity="0.2"/>
+                  <g transform="translate(50 50)">
+                    <rect x="-35" y="-35" width="70" height="70" transform="rotate(15)" stroke="#8E9AAF" stroke-width="0.8" opacity="0.3"/>
+                    <rect x="-30" y="-30" width="60" height="60" transform="rotate(35)" stroke="#8E9AAF" stroke-width="0.8" opacity="0.4"/>
+                    <rect x="-25" y="-25" width="50" height="50" transform="rotate(55)" stroke="#D4AF37" stroke-width="1.5" opacity="0.7"/>
+                    <rect x="-20" y="-20" width="40" height="40" transform="rotate(75)" stroke="#D4AF37" stroke-width="2.5"/>
+                  </g>
+                </g>
+                <g transform="translate(50 50)">
+                  <circle cx="0" cy="0" r="5" fill="#D4AF37" stroke="none"/>
+                  <g fill="#D4AF37">
+                    <circle cx="0" cy="-12" r="2.5"/><circle cx="0" cy="-12" r="2.5" transform="rotate(40)"/><circle cx="0" cy="-12" r="2.5" transform="rotate(80)"/>
+                    <circle cx="0" cy="-12" r="2.5" transform="rotate(120)"/><circle cx="0" cy="-12" r="2.5" transform="rotate(160)"/><circle cx="0" cy="-12" r="2.5" transform="rotate(200)"/>
+                    <circle cx="0" cy="-12" r="2.5" transform="rotate(240)"/><circle cx="0" cy="-12" r="2.5" transform="rotate(280)"/><circle cx="0" cy="-12" r="2.5" transform="rotate(320)"/>
+                  </g>
+                  <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5"/>
+                  <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(80)"/>
+                  <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(160)"/>
+                  <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(240)"/>
+                  <path d="M 0 -12 L 0 0" stroke="#D4AF37" stroke-width="0.8" opacity="0.5" transform="rotate(320)"/>
+                </g>
+              </g>
+            </svg>
+        </div>
+        <div class="container">
+            <span class="label">Sovereign Local Intelligence</span>
+            <h1>Your AI. Your Data.<br><span class="gold">Your Privacy.</span></h1>
+            <p class="subtitle">Architecting high-density runtimes that operate wholly within your jurisdictional perimeter. No cloud dependency. No data extraction. Absolute operational sovereignhy.</p>
+            <a href="#inquiry" class="cta">Request Briefing</a>
+        </div>
+    </section>
+
+    <section id="architecture">
+        <div class="container">
+            <span class="label">System Substrate</span>
+            <h2 id="scramble-target" class="scramble-target">Department-Native Intelligence</h2>
+            <div class="module-grid">
+                <div class="module">
+                    <div class="status"><span class="led"></span>SOVEREIGN_VAULT</div>
+                    <h3>VAULT</h3>
+                    <p>Hardware-rooted data residency. Zero transit to third-party servers. All institutional knowledge remains in your vault.</p>
+                </div>
+                <div class="module">
+                    <div class="status"><span class="led"></span>SOVEREIGN_SPIRE</div>
+                    <h3>SPIRE</h3>
+                    <p>Local high-velocity inference on bare-metal hardware. Sub-second reasoning without the cloud-native digital leash.</p>
+                </div>
+                <div class="module">
+                    <div class="status"><span class="led"></span>SOVEREIGN_ENCLAVE</div>
+                    <h3>ENCLAVE</h3>
+                    <p>Disconnected resilience for clandestine missions. Air-gapped operational capacity for sensitive intelligence sectors.</p>
+                </div>
+                <div class="module">
+                    <div class="status"><span class="led"></span>SOVEREIGN_CITADEL</div>
+                    <h3>CITADEL</h3>
+                    <p>The ultimate synthesis. Fully autonomous Nodal clusters that scale intelligence across your entire infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hardware">
+        <div class="container">
+            <span class="label">Bare Metal Foundation</span>
+            <h2>Hardware Agnostic Runtimes</h2>
+            <div class="hw-grid">
+                <div class="hw-card"><h4>NVIDIA</h4><p>High-Density H100/RTX Deployment</p></div>
+                <div class="hw-card"><h4>AMD</h4><p>MI300X/Instinct Infrastructure</p></div>
+                <div class="hw-card"><h4>APPLE</h4><p>M4 Ultra Unified Edge Ingest</p></div>
+                <div class="hw-card"><h4>INTEL</h4><p>Gaudi 3 Enterprise Scaling</p>
+                </div>
+        </div>
+    </section>
+
+    <section id="inquiry">
+        <div class="container">
+            <span class="label">Transmission Intent</span>
+            <h2>Clandestine Briefing</h2>
+            <div class="form-terminal">
+                <form action="https://formsubmit.co/guy@sovereignai.llc" method="POST">
+                    <input type="text" name="name" class="form-control" placeholder="IDENT_NAME" required>
+                    <input type="text" name="institution" class="form-control" placeholder="ORG_INSTITUTION" required>
+                    <textarea name="message" class="form-control" placeholder="BRIEFING_REQUIREMENTS" rows="4" required></textarea>
+                    <button type="submit" class="submit-btn">Initiate Transfer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>JUNG LINEAGE ‚Äî ESTABLISHED 1238 | 963 HZ RESONANCE</p>
+        <p style="opacity:0.3; margin-top:1.5rem">&copy; 2026 SOVEREIGNAI LLC. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // WEBGL RESONANT FIELD
+        (function(){
+            const canvas = document.getElementById('resonant-field');
+            if(!canvas) return;
+            const gl = canvas.getContext('webgl');
+            if (!gl) return;
+            const vs = `attribute vec2 p; void main(){ gl_Position=vec4(p,0,1); gl_PointSize=1.5; }`;
+            const fs = `precision mediump float; void main(){ gl_FragColor=vec4(0.83,0.68,0.21,0.25); }`;
+            const compile = (t, s) => { let sh = gl.createShader(t); gl.shaderSource(sh, s); gl.compileShader(sh); return sh; };
+            const prog = gl.createProgram();
+            gl.attachShader(prog, compile(gl.VERTEX_SHADER, vs));
+            gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fs));
+            gl.linkProgram(prog); gl.useProgram(prog);
+            const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+            const pts = []; for(let i=0; i<800; i++) pts.push(Math.random()*2-1, Math.random()*2-1);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(pts), gl.STATIC_DRAW);
+            const pos = gl.getAttribLocation(prog, 'p'); gl.enableVertexAttribArray(pos);
+            gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+            function render() {
+                canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+                gl.viewport(0,0,canvas.width,canvas.height);
+                gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.POINTS, 0, 800);
+                requestAnimationFrame(render);
+            }
+            render();
+        })();
+
+        // SIGIL SCROLL ROTATION
+        const sigil = document.getElementById('hero-sigil');
+        if(sigil) {
+            width.addEventListener('scroll', () => {
+                const rotation = window.scrollY * 0.04;
+                sigil.style.transform = `rotate(${rotation}deg)`;
+            });
+        }
+
+        // TEXT SCRAMBLE
+        const scrambleTarget = document.getElementById('scramble-target');
+        if(scrambleTarget) {
+            const originalText = scrambleTarget.innerText;
+            const scrambleChars = "!<>-_\\/[]{}‚Äî=+*^?";
+            let scrambleFrame = 0;
+            function runScramble() {
+                if (scrambleFrame < 25) {
+                    scrambleTarget.innerText = originalText.split('').map(() => scrambleChars[Math.flocr(scrambleChars.length*Math.random())]).join('');
+                    scrambleFrame++; setTimeout(runScramble, 60);
+                } else { scrambleTarget.innerText = originalText; }
+            }
+            const scrambleObserver = new IntersectionObserver((e) => { if(e[0].isIntersecting) runScramble(); });
+            scrambleObserver.observe(scrambleTarget);
+        }
+    </script>
 </body>
 </html>
