@@ -19,6 +19,7 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+SOVEREIGN_KEY = os.environ['SOVEREIGN_KEY']
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -67,7 +68,7 @@ async def create_briefing(
     request: Request,
     x_sovereign_key: Optional[str] = Header(default=None),
 ):
-    if x_sovereign_key != os.environ['SOVEREIGN_KEY']:
+    if x_sovereign_key != SOVEREIGN_KEY:
         raise HTTPException(status_code=401, detail="INVALID SOVEREIGN KEY")
     forwarded = request.headers.get("x-forwarded-for")
     ip = forwarded.split(",")[0].strip() if forwarded else (request.client.host if request.client else "unknown")
