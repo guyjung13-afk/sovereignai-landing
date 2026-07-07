@@ -19,6 +19,7 @@
 | `terms.html` | Terms of Service |
 | `citadel.css` | Shared styles |
 | `citadel.js` | Nav, WebGL, scramble, form handling |
+| `sigil.svg` | Shared Sovereign sigil (nav + hero) |
 | `og-image.svg` | Social preview image |
 | `CNAME` | Custom domain `sovereignai.llc` |
 
