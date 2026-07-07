@@ -151,11 +151,11 @@ h2 {
 .sub-card:hover { border-color: rgba(212, 175, 55, 0.4); transform: translateY(-8px); background: #0C0F16; }
 
 .sub-card h3 {
-    font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 1.5rem;
-    letter-spacing: 0.1em; color: var(--gold);
+    font-family: var(--font-mono); font-size: 1.2rem; margin-bottom: 1.5rem;
+    letter-spacing: 0.1em; color: var(--gold); font-weight: 600;
 }
 
-.sub-card p { color: var(--steel); font-size: 0.95rem; font-weight: 300; }
+.sub-card p { color: var(--steel); font-size: 1rem; font-weight: 300; }
 
 .verticals-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -172,11 +172,11 @@ h2 {
 .vertical-card .status-header { margin-bottom: 1rem; }
 
 .vertical-card h3 {
-    font-family: var(--font-mono); font-size: 1rem; margin-bottom: 1rem;
-    letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase;
+    font-family: var(--font-mono); font-size: 1.125rem; margin-bottom: 1rem;
+    letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; font-weight: 600;
 }
 
-.vertical-card p { color: var(--steel); font-size: 0.85rem; font-weight: 300; line-height: 1.6; }
+.vertical-card p { color: var(--steel); font-size: 0.9rem; font-weight: 300; line-height: 1.6; }
 
 .manifesto-block {
     max-width: 850px; margin: 0 auto;
@@ -223,9 +223,12 @@ h2 {
 
 .hw-card:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.02); }
 
-.hw-card h4 { font-family: var(--font-mono); color: var(--gold); font-size: 1rem; margin-bottom: 0.5rem; }
+.hw-card h4 {
+    font-family: var(--font-mono); color: var(--gold); font-size: 1.125rem;
+    margin-bottom: 0.5rem; font-weight: 600; letter-spacing: 0.06em;
+}
 
-.hw-card p { font-size: 0.8rem; color: var(--steel); }
+.hw-card p { font-size: 0.875rem; color: var(--steel); }
 
 .form-terminal {
     max-width: 850px; margin: 4rem auto 0; background: #000;
