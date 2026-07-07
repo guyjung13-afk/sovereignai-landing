@@ -329,110 +329,69 @@
     </section>
 
     <!-- ========================================
-         SOVEREIGN NODAL STACK (Trimmed + Diagram)
+         SOVEREIGN NODAL STACK (Unified Stack)
     ========================================= -->
-    <section id="architecture" class="max-w-6xl mx-auto px-6 py-20 border-t border-zinc-800 relative z-[2]">
-        <!-- Header -->
-        <div class="max-w-3xl mb-12">
+    <section id="architecture" class="max-w-5xl mx-auto px-6 py-20 border-t border-zinc-800">
+        <div class="max-w-3xl mb-10">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2px] font-mono mb-4">
                 ARCHITECTURE
             </div>
             <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Sovereign Nodal Stack</h2>
             <p class="mt-4 text-lg text-zinc-400">
-                A four-layer architecture that keeps intelligence, data, and control entirely within your perimeter — with no cloud dependency and full functionality even when offline.
+                A unified, layered architecture that keeps your AI fully local, secure, and operational — even when disconnected from the internet.
             </p>
         </div>
 
-        <!-- Vertical Layered Diagram -->
-        <div class="max-w-md mx-auto mb-12">
-            <div class="space-y-3">
-                <!-- Layer 4 - CITADEL (Top) -->
-                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">04 CITADEL</div>
-                    <div class="flex-1">
-                        <div class="text-white font-semibold">Autonomy</div>
-                        <div class="text-sm text-zinc-400">Zero external dependencies. Full operation even under total disconnection.</div>
+        <!-- Unified Vertical Stack -->
+        <div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-800 rounded-3xl p-8 space-y-4">
+            <!-- CITADEL (Top Layer) -->
+            <div class="flex items-start gap-6 border-l-4 border-amber-400 pl-6">
+                <div>
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400 mb-1">04 — CITADEL</div>
+                    <div class="text-white font-semibold text-lg">Custom-Tailored Agent</div>
+                    <div class="text-zinc-400 mt-1 text-[15px]">
+                        The complete package. A sovereign AI agent custom-built for your specific business needs, with full functionality even when operating completely off-grid.
                     </div>
                 </div>
+            </div>
 
-                <!-- Layer 3 - ENCLAVE -->
-                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">03 ENCLAVE</div>
-                    <div class="flex-1">
-                        <div class="text-white font-semibold">Full Audit</div>
-                        <div class="text-sm text-zinc-400">Deterministic reasoning with complete local traceability and replayability.</div>
+            <!-- ENCLAVE -->
+            <div class="flex items-start gap-6 border-l-4 border-amber-400 pl-6">
+                <div>
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400 mb-1">03 — ENCLAVE</div>
+                    <div class="text-white font-semibold text-lg">Local Weights, Constraints & Guardrails</div>
+                    <div class="text-zinc-400 mt-1 text-[15px]">
+                        Your models, rules, and safety constraints run entirely locally — ensuring consistent, auditable, and controlled behavior.
                     </div>
                 </div>
+            </div>
 
-                <!-- Layer 2 - SPIRE -->
-                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">02 SPIRE</div>
-                    <div class="flex-1">
-                        <div class="text-white font-semibold">Local Runtime</div>
-                        <div class="text-sm text-zinc-400">High-velocity inference runs directly on your hardware with no external dependencies.</div>
+            <!-- SPIRE -->
+            <div class="flex items-start gap-6 border-l-4 border-amber-400 pl-6">
+                <div>
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400 mb-1">02 — SPIRE</div>
+                    <div class="text-white font-semibold text-lg">Local Agent</div>
+                    <div class="text-zinc-400 mt-1 text-[15px]">
+                        Intelligent agents that run directly on your hardware, executing tasks and workflows without relying on external systems.
                     </div>
                 </div>
+            </div>
 
-                <!-- Layer 1 - VAULT (Bottom) -->
-                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">01 VAULT</div>
-                    <div class="flex-1">
-                        <div class="text-white font-semibold">Perimeter Lock</div>
-                        <div class="text-sm text-zinc-400">Absolute data residency. All models and data remain inside your infrastructure.</div>
+            <!-- VAULT (Base Layer) -->
+            <div class="flex items-start gap-6 border-l-4 border-amber-400 pl-6">
+                <div>
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400 mb-1">01 — VAULT</div>
+                    <div class="text-white font-semibold text-lg">Local Storage</div>
+                    <div class="text-zinc-400 mt-1 text-[15px]">
+                        All data, models, and knowledge remain stored locally with zero external exposure.
                     </div>
                 </div>
-
-            </div>
-            <p class="text-center text-xs text-zinc-500 mt-3 tracking-wide">Built from the ground up for resilience and control</p>
-        </div>
-
-        <!-- Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- 01 — VAULT -->
-            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
-                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_VAULT</div>
-                <h3 class="text-xl font-bold tracking-tight text-white mb-3">01 Perimeter Lock</h3>
-                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    Absolute data residency. All proprietary data and model weights remain inside your infrastructure with zero external exposure.
-                </p>
-                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">DATA NEVER LEAVES</div>
-            </div>
-
-            <!-- 02 — SPIRE -->
-            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
-                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_SPIRE</div>
-                <h3 class="text-xl font-bold tracking-tight text-white mb-3">02 Local Runtime</h3>
-                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    High-velocity inference runs directly on your hardware. No API latency or external dependencies.
-                </p>
-                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">INFERENCE ON THE METAL</div>
-            </div>
-
-            <!-- 03 — ENCLAVE -->
-            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
-                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_ENCLAVE</div>
-                <h3 class="text-xl font-bold tracking-tight text-white mb-3">03 Full Audit</h3>
-                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    Deterministic reasoning with complete local traceability. Every decision is replayable and auditable inside your environment.
-                </p>
-                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">REPLAYABLE REASONING</div>
-            </div>
-
-            <!-- 04 — CITADEL -->
-            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
-                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_CITADEL</div>
-                <h3 class="text-xl font-bold tracking-tight text-white mb-3">04 Autonomy</h3>
-                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    Zero external dependencies. The system continues full operation even under total signal disconnection.
-                </p>
-                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">RESILIENT BY DESIGN</div>
             </div>
 
         </div>
 
-        <!-- Closing Line -->
-        <p class="mt-10 max-w-2xl text-center mx-auto text-zinc-400 text-[15px]">
-            This architecture gives operators independent AI that remains fully functional regardless of connectivity and scales from single nodes to cross-departmental mesh networks.
+        <p class="mt-8 max-w-2xl text-center mx-auto text-zinc-400 text-[15px]">
+            Built as one cohesive system — from secure local storage to a fully autonomous, business-specific agent that works anywhere.
         </p>
 
     </section>
