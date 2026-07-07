@@ -222,56 +222,105 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Energy -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Energy</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Energy</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    SCADA-adjacent intelligence for grid optimization, predictive maintenance, and operational continuity. Designed for air-gapped and mission-critical infrastructure.
+                    SCADA-adjacent intelligence for grid optimization, predictive maintenance, and operational continuity. Built for air-gapped critical infrastructure.
                 </p>
             </div>
 
             <!-- Healthcare -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Healthcare</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Healthcare</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    HIPAA-sovereign diagnostics and clinical intelligence. Models that never transmit PHI, enabling on-premise inference for radiology, pathology, and decision support.
+                    HIPAA-sovereign diagnostics and clinical intelligence. Models that never transmit PHI, with full on-premise inference for sensitive medical workloads.
                 </p>
             </div>
 
             <!-- Defense -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Defense</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 8.944 11.922a11.956 11.956 0 01-1.09-.17z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Defense</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
                     Tactical AI for disconnected and contested environments. Hardened, zero-trust inference at the edge for classified and mission-critical operations.
                 </p>
             </div>
 
             <!-- Law -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Law</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M21 21l-3-1m-3 1l3-9a5.002 5.002 0 00-6.001 0M3 21l3-1" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Law</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    Privilege-preserving document intelligence. Local LLM review for contracts, discovery, and compliance without exposing sensitive client data to external systems.
+                    Privilege-preserving document intelligence. Local LLM review for contracts, discovery, and compliance without exposing client data to external systems.
                 </p>
             </div>
 
             <!-- Secure Private Data -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Secure Private Data</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V9a4 4 0 00-8 0v2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Secure Private Data</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
                     Enterprise-grade data vaults with fully local AI processing. Custom models trained on proprietary datasets that never leave your physical perimeter.
                 </p>
             </div>
 
             <!-- Finance -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Finance</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Finance</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
-                    Regulatory-compliant intelligence for fraud detection, risk modeling, and proprietary strategy development. Full data residency with no exposure to external APIs.
+                    Regulatory-compliant intelligence for fraud detection, risk modeling, and proprietary strategy. Full data residency with no exposure to external systems.
                 </p>
             </div>
 
             <!-- Manufacturing -->
-            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
-                <h3 class="text-xl font-semibold text-white mb-3">Manufacturing</h3>
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-amber-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 01-2-2H7a2 2 0 01-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white">Manufacturing</h3>
+                </div>
                 <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
                     On-premise process optimization, predictive maintenance, and quality intelligence. Built for air-gapped factory floors and distributed industrial environments.
                 </p>
