@@ -103,9 +103,43 @@ h1 {
 }
 
 .hero h1,
-section h1.text-6xl {
+#hero-section h1 {
     text-transform: none;
     margin-bottom: 0;
+}
+
+#hero-section {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-reveal {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+    filter: blur(10px);
+    transition:
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+.hero-glow {
+    text-shadow: 0 0 40px rgba(212, 175, 55, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
 }
 
 h1 span.gold { color: var(--gold); text-shadow: 0 0 35px var(--gold-glow); }
