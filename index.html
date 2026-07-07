@@ -20,6 +20,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="citadel.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+                    },
+                    colors: {
+                        sovereign: {
+                            gold: '#D4AF37',
+                            obsidian: '#05070A',
+                        },
+                    },
+                },
+            },
+        };
+    </script>
 </head>
 <body>
     <div class="grid-bg"></div>
@@ -166,47 +185,58 @@
         </div>
     </section>
 
-    <section id="inquiry">
-        <div class="container">
-            <span class="label">Transmission Intent</span>
-            <h2>Clandestine Briefing</h2>
-            <div class="form-terminal">
-                <form id="inquiry-form" action="https://formsubmit.co/guy@sovereignai.llc" method="POST">
-                    <input type="hidden" name="_subject" value="New Sovereign Briefing Request">
-                    <input type="hidden" name="_next" value="https://sovereignai.llc?submitted=true">
-                    <input type="hidden" name="_captcha" value="false">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="sr-only" for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="IDENT_NAME" required>
+    <section id="inquiry" class="relative z-[2] border-t border-zinc-800/80 bg-zinc-950 py-20 px-4 sm:px-6 sm:py-24 lg:px-8">
+        <div class="mx-auto max-w-4xl">
+            <span class="mb-6 block font-mono text-[0.7rem] font-semibold uppercase tracking-[0.5em] text-amber-500/90">Transmission Intent</span>
+            <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-zinc-100 sm:text-4xl lg:text-5xl">Clandestine Briefing</h2>
+            <p class="mb-10 max-w-2xl font-light text-zinc-400 sm:mb-12">Begin the transition to Department-Native Intelligence. Secure channel for technical discovery — encrypted in transit, zero third-party inference.</p>
+
+            <div id="form-status" class="hidden" role="status" aria-live="polite"></div>
+
+            <div class="rounded-sm border border-amber-500/25 bg-zinc-900/80 p-6 shadow-2xl shadow-black/60 backdrop-blur-sm sm:p-10">
+                <form id="inquiry-form" class="space-y-6" novalidate>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="name" class="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-amber-500/80">Ident Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full border-0 border-b border-zinc-700 bg-transparent px-0 py-3 font-mono text-sm text-zinc-100 placeholder-zinc-600 transition-colors focus:border-amber-500 focus:outline-none focus:ring-0"
+                                placeholder="IDENT_NAME" autocomplete="name">
                         </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="org">Organization</label>
-                            <input type="text" id="org" name="org" class="form-control" placeholder="ORG_INSTITUTION" required>
+                        <div>
+                            <label for="org" class="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-amber-500/80">Org Institution</label>
+                            <input type="text" id="org" name="org" required
+                                class="w-full border-0 border-b border-zinc-700 bg-transparent px-0 py-3 font-mono text-sm text-zinc-100 placeholder-zinc-600 transition-colors focus:border-amber-500 focus:outline-none focus:ring-0"
+                                placeholder="ORG_INSTITUTION" autocomplete="organization">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="sr-only" for="role">Role</label>
-                            <input type="text" id="role" name="role" class="form-control" placeholder="IDENT_ROLE" required>
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="role" class="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-amber-500/80">Ident Role</label>
+                            <input type="text" id="role" name="role" required
+                                class="w-full border-0 border-b border-zinc-700 bg-transparent px-0 py-3 font-mono text-sm text-zinc-100 placeholder-zinc-600 transition-colors focus:border-amber-500 focus:outline-none focus:ring-0"
+                                placeholder="IDENT_ROLE" autocomplete="organization-title">
                         </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="sector">Sector</label>
-                            <select id="sector" name="sector" class="form-control" required>
-                                <option value="" disabled selected>DOMAIN_SECTOR</option>
-                                <option value="Energy">Energy</option>
-                                <option value="Defense">Defense</option>
-                                <option value="Healthcare">Healthcare</option>
-                                <option value="Law">Law</option>
-                                <option value="Other">Other Institutional</option>
+                        <div>
+                            <label for="sector" class="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-amber-500/80">Domain Sector</label>
+                            <select id="sector" name="sector" required
+                                class="w-full cursor-pointer border-0 border-b border-zinc-700 bg-transparent px-0 py-3 font-mono text-sm text-zinc-100 transition-colors focus:border-amber-500 focus:outline-none focus:ring-0">
+                                <option value="" disabled selected class="bg-zinc-900 text-zinc-500">DOMAIN_SECTOR</option>
+                                <option value="Energy" class="bg-zinc-900">Energy</option>
+                                <option value="Defense" class="bg-zinc-900">Defense</option>
+                                <option value="Healthcare" class="bg-zinc-900">Healthcare</option>
+                                <option value="Law" class="bg-zinc-900">Law</option>
+                                <option value="Other" class="bg-zinc-900">Other Institutional</option>
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sr-only" for="message">Briefing Requirements</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="BRIEFING_REQUIREMENTS" rows="5" required></textarea>
+                    <div>
+                        <label for="message" class="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.2em] text-amber-500/80">Briefing Requirements</label>
+                        <textarea id="message" name="message" rows="5" required
+                            class="w-full resize-y border-0 border-b border-zinc-700 bg-transparent px-0 py-3 font-mono text-sm text-zinc-100 placeholder-zinc-600 transition-colors focus:border-amber-500 focus:outline-none focus:ring-0"
+                            placeholder="BRIEFING_REQUIREMENTS — objectives, timeline, operational context..."></textarea>
                     </div>
-                    <button type="submit" id="submit-btn" class="submit-btn">
+                    <button type="submit" id="submit-btn"
+                        class="mt-4 w-full bg-amber-500 px-6 py-4 font-mono text-sm font-black uppercase tracking-[0.35em] text-zinc-950 transition-all hover:bg-amber-400 hover:shadow-[0_0_40px_rgba(245,158,11,0.25)] disabled:cursor-wait disabled:opacity-60">
                         <span class="btn-text">Initiate Transfer</span>
                     </button>
                 </form>
@@ -225,5 +255,66 @@
     </footer>
 
     <script src="citadel.js"></script>
+    <script>
+        (function () {
+            var form = document.getElementById('inquiry-form');
+            if (!form) return;
+
+            var statusEl = document.getElementById('form-status');
+            var submitBtn = document.getElementById('submit-btn');
+            var btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+
+            var statusBase = 'mb-6 rounded border px-4 py-3 text-center font-mono text-sm tracking-wide';
+            var statusSuccess = statusBase + ' border-amber-500/40 bg-amber-500/5 text-amber-400';
+            var statusError = statusBase + ' border-red-500/40 bg-red-500/5 text-red-400';
+
+            function setStatus(message, type) {
+                if (!statusEl) return;
+                statusEl.textContent = message;
+                statusEl.className = type === 'success' ? statusSuccess : statusError;
+                statusEl.classList.remove('hidden');
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                if (submitBtn) submitBtn.disabled = true;
+                if (btnText) btnText.textContent = 'TRANSMITTING...';
+                if (statusEl) statusEl.classList.add('hidden');
+
+                var data = new FormData(form);
+                data.append('_subject', 'New Sovereign Briefing Request');
+                data.append('_captcha', 'false');
+                data.append('_template', 'table');
+
+                fetch('https://formsubmit.co/ajax/guy@sovereignai.llc', {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' },
+                })
+                    .then(function (res) { return res.json(); })
+                    .then(function (json) {
+                        if (json.success === 'true' || json.success === true) {
+                            setStatus('TRANSMISSION RECEIVED — WE WILL RESPOND SHORTLY.', 'success');
+                            form.reset();
+                        } else {
+                            throw new Error(json.message || 'Submission failed');
+                        }
+                    })
+                    .catch(function () {
+                        setStatus('TRANSMISSION FAILED — RETRY OR CONTACT guy@sovereignai.llc', 'error');
+                    })
+                    .finally(function () {
+                        if (submitBtn) submitBtn.disabled = false;
+                        if (btnText) btnText.textContent = 'Initiate Transfer';
+                    });
+            });
+        })();
+    </script>
 </body>
 </html>

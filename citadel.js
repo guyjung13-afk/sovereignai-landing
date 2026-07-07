@@ -94,27 +94,4 @@
         });
     }
 
-    // Form submit loading state
-    var form = document.getElementById('inquiry-form');
-    var submitBtn = document.getElementById('submit-btn');
-    if (form && submitBtn) {
-        form.addEventListener('submit', function () {
-            submitBtn.disabled = true;
-            var btnText = submitBtn.querySelector('.btn-text');
-            if (btnText) btnText.textContent = 'TRANSMITTING...';
-        });
-    }
-
-    // Success banner from redirect
-    if (window.location.search.indexOf('submitted=true') !== -1) {
-        var banner = document.createElement('div');
-        banner.className = 'form-banner';
-        banner.textContent = 'TRANSMISSION RECEIVED — WE WILL RESPOND SHORTLY.';
-        var inquiry = document.getElementById('inquiry');
-        if (inquiry) {
-            var container = inquiry.querySelector('.container');
-            if (container) container.insertBefore(banner, container.firstChild);
-        }
-        history.replaceState(null, '', window.location.pathname + window.location.hash);
-    }
 })();
