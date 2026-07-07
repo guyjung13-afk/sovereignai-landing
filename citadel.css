@@ -102,6 +102,11 @@ h1 {
     line-height: 0.9; margin-bottom: 2rem; text-transform: uppercase;
 }
 
+.hero h1 {
+    text-transform: none; letter-spacing: inherit; font-size: inherit;
+    font-weight: inherit; line-height: inherit;
+}
+
 h1 span.gold { color: var(--gold); text-shadow: 0 0 35px var(--gold-glow); }
 
 .subtitle {
