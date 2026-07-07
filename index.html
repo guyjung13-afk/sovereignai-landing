@@ -329,64 +329,110 @@
     </section>
 
     <!-- ========================================
-         SOVEREIGN NODAL STACK
+         SOVEREIGN NODAL STACK (Trimmed + Diagram)
     ========================================= -->
-    <section id="architecture" class="max-w-6xl mx-auto px-6 py-24 border-t border-zinc-800">
+    <section id="architecture" class="max-w-6xl mx-auto px-6 py-20 border-t border-zinc-800 relative z-[2]">
+        <!-- Header -->
         <div class="max-w-3xl mb-12">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2px] font-mono mb-4">
                 ARCHITECTURE
             </div>
-            <h2 class="scramble-target text-4xl md:text-5xl font-bold tracking-tight text-white">Sovereign Nodal Stack</h2>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Sovereign Nodal Stack</h2>
             <p class="mt-4 text-lg text-zinc-400">
-                An elegantly simple architecture built on operator-owned hardware, local models, and local storage.       It delivers full AI capability without any cloud dependency — and continues functioning seamlessly even when internet or Wi-Fi is unavailable.       Designed for energy, manufacturing, and remote operations, it deploys across minisforum nodes, desktops, and multi-node mesh networks,       giving teams independent, customizable intelligence that works wherever the work happens.
+                A four-layer architecture that keeps intelligence, data, and control entirely within your perimeter — with no cloud dependency and full functionality even when offline.
             </p>
         </div>
 
+        <!-- Vertical Layered Diagram -->
+        <div class="max-w-md mx-auto mb-12">
+            <div class="space-y-3">
+                <!-- Layer 4 - CITADEL (Top) -->
+                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">04 CITADEL</div>
+                    <div class="flex-1">
+                        <div class="text-white font-semibold">Autonomy</div>
+                        <div class="text-sm text-zinc-400">Zero external dependencies. Full operation even under total disconnection.</div>
+                    </div>
+                </div>
+
+                <!-- Layer 3 - ENCLAVE -->
+                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">03 ENCLAVE</div>
+                    <div class="flex-1">
+                        <div class="text-white font-semibold">Full Audit</div>
+                        <div class="text-sm text-zinc-400">Deterministic reasoning with complete local traceability and replayability.</div>
+                    </div>
+                </div>
+
+                <!-- Layer 2 - SPIRE -->
+                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">02 SPIRE</div>
+                    <div class="flex-1">
+                        <div class="text-white font-semibold">Local Runtime</div>
+                        <div class="text-sm text-zinc-400">High-velocity inference runs directly on your hardware with no external dependencies.</div>
+                    </div>
+                </div>
+
+                <!-- Layer 1 - VAULT (Bottom) -->
+                <div class="flex items-center gap-4 bg-zinc-900 border border-zinc-800 rounded-2xl px-6 py-4">
+                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 w-28 shrink-0">01 VAULT</div>
+                    <div class="flex-1">
+                        <div class="text-white font-semibold">Perimeter Lock</div>
+                        <div class="text-sm text-zinc-400">Absolute data residency. All models and data remain inside your infrastructure.</div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center text-xs text-zinc-500 mt-3 tracking-wide">Built from the ground up for resilience and control</p>
+        </div>
+
+        <!-- Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- 01 — VAULT -->
-            <div class="card card-hover group relative">
-                <div class="card-label">SOVEREIGN_VAULT</div>
-                <h3 class="card-title-lg">01 Perimeter Lock</h3>
-                <p class="card-desc">
-                    Absolute data residency. Zero transit surface. All proprietary data and model weights remain inside the vault with no external exposure.
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_VAULT</div>
+                <h3 class="text-xl font-bold tracking-tight text-white mb-3">01 Perimeter Lock</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Absolute data residency. All proprietary data and model weights remain inside your infrastructure with zero external exposure.
                 </p>
-                <div class="card-footer">DATA NEVER LEAVES</div>
+                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">DATA NEVER LEAVES</div>
             </div>
 
             <!-- 02 — SPIRE -->
-            <div class="card card-hover group relative">
-                <div class="card-label">SOVEREIGN_SPIRE</div>
-                <h3 class="card-title-lg">02 Local Runtime</h3>
-                <p class="card-desc">
-                    High-velocity inference executes directly on your metal. No API latency, no external digital leashes, and no cloud round-trips.
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_SPIRE</div>
+                <h3 class="text-xl font-bold tracking-tight text-white mb-3">02 Local Runtime</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    High-velocity inference runs directly on your hardware. No API latency or external dependencies.
                 </p>
-                <div class="card-footer">INFERENCE ON THE METAL</div>
+                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">INFERENCE ON THE METAL</div>
             </div>
 
             <!-- 03 — ENCLAVE -->
-            <div class="card card-hover group relative">
-                <div class="card-label">SOVEREIGN_ENCLAVE</div>
-                <h3 class="card-title-lg">03 Full Audit</h3>
-                <p class="card-desc">
-                    Deterministic reasoning with complete local traceability. Every agent decision is replayable and auditable inside your environment.
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_ENCLAVE</div>
+                <h3 class="text-xl font-bold tracking-tight text-white mb-3">03 Full Audit</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Deterministic reasoning with complete local traceability. Every decision is replayable and auditable inside your environment.
                 </p>
-                <div class="card-footer">REPLAYABLE REASONING</div>
+                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">REPLAYABLE REASONING</div>
             </div>
 
             <!-- 04 — CITADEL -->
-            <div class="card card-hover group relative">
-                <div class="card-label">SOVEREIGN_CITADEL</div>
-                <h3 class="card-title-lg">04 Autonomy</h3>
-                <p class="card-desc">
-                    Zero external dependencies. The system continues full operation even under total signal disconnection — sovereign under siege.
+            <div class="group bg-zinc-900 border border-zinc-800 hover:border-amber-500/30 rounded-3xl p-8 transition-colors flex flex-col">
+                <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-4">SOVEREIGN_CITADEL</div>
+                <h3 class="text-xl font-bold tracking-tight text-white mb-3">04 Autonomy</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Zero external dependencies. The system continues full operation even under total signal disconnection.
                 </p>
-                <div class="card-footer">RESILIENT BY DESIGN</div>
+                <div class="mt-6 text-[10px] font-mono tracking-widest text-zinc-500 group-hover:text-amber-400/70 transition-colors">RESILIENT BY DESIGN</div>
             </div>
+
         </div>
 
         <!-- Closing Line -->
         <p class="mt-10 max-w-2xl text-center mx-auto text-zinc-400 text-[15px]">
-            This architecture gives operators a fundamentally independent AI capability — one that remains fully functional regardless of connectivity, and scales naturally from single nodes to cross-departmental mesh networks.
+            This architecture gives operators independent AI that remains fully functional regardless of connectivity and scales from single nodes to cross-departmental mesh networks.
         </p>
 
     </section>
