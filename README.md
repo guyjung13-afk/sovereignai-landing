@@ -1,32 +1,40 @@
-# SovereignAI Landing Page — V1.1
+# SovereignAI Landing Page — Citadel V4.1
 
 **Infrastructure Sovereignty.** Local Intelligence. Absolute Authority. Permanent Privacy.
 
 ## Architecture
 
-- 100% Static HTML/CSS — zero dependencies, zero build step
-- SVG-native Shield + Circuit Tree logo
-- Monospace typography with futuristic, high-contrast aesthetic
-- Fully responsive (desktop, tablet, mobile)
+- 100% static HTML/CSS/JS — zero build step
+- Citadel aesthetic: obsidian/gold palette, WebGL resonant field, scramble text
+- Multi-page: home, manifesto, privacy, terms
+- GitHub Pages deployment from `main` branch
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Single-page home with section anchors |
+| `manifesto.html` | Full Sovereign Manifesto |
+| `privacy.html` | Privacy Policy |
+| `terms.html` | Terms of Service |
+| `citadel.css` | Shared styles |
+| `citadel.js` | Nav, WebGL, scramble, form handling |
+| `og-image.svg` | Social preview image |
+| `CNAME` | Custom domain `sovereignai.llc` |
 
 ## Palette
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| Primary Dark | `#304E63` | Background, deep elements |
-| Primary Accent | `#C78BA0` | Highlights, borders, CTA |
-| Secondary Dark | `#4A5D6B` | Muted text, secondary elements |
-| Background Bone | `#EAE2D6` | Primary text, contrast |
+| Obsidian | `#05070A` | Background |
+| Steel | `#A8B4C2` | Body text, grid |
+| Gold | `#D4AF37` | Accents, CTAs |
 
 ## Deployment
 
 Static files served via GitHub Pages from the `main` branch.
 
 **Live:** [sovereignai.llc](https://sovereignai.llc)
-
-## Heritage
-
-Jung Lineage — Established 1238 | 963 Hz Resonance
 
 ---
 
