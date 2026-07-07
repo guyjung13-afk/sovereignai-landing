@@ -254,16 +254,110 @@
 
     </section>
 
-    <section id="hardware">
-        <div class="container">
-            <span class="label">Bare Metal Foundation</span>
-            <h2 class="text-4xl md:text-5xl tracking-tight font-bold">Hardware Agnostic Runtimes</h2>
-            <div class="hw-grid">
-                <div class="hw-card"><h4>NVIDIA</h4><p>H100/RTX Deployment</p></div>
-                <div class="hw-card"><h4>AMD</h4><p>MI300X Infrastructure</p></div>
-                <div class="hw-card"><h4>APPLE</h4><p>M4 Ultra Edge Ingest</p></div>
-                <div class="hw-card"><h4>INTEL</h4><p>Gaudi 3 Scaling</p></div>
+    <!-- ========================================
+         BARE METAL FOUNDATION
+    ========================================= -->
+    <section id="hardware" class="max-w-6xl mx-auto px-6 py-20 border-t border-zinc-800 relative z-[2]">
+        <div class="max-w-3xl mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2px] font-mono mb-4">
+                HARDWARE
             </div>
+            <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Bare Metal Foundation</h2>
+            <p class="mt-4 text-lg text-zinc-400">
+                The Sovereign Nodal Stack runs efficiently across a range of high-performance and edge-optimized hardware.       We prioritize platforms that deliver strong local inference, power efficiency, and long-term sovereignty.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- NVIDIA -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- NVIDIA Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L44 14V34L24 44L4 34V14L24 4Z" fill="#76B900"/>
+                        <path d="M24 12L36 18V30L24 36L12 30V18L24 12Z" fill="#1A1A1A"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">NVIDIA</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Industry-leading performance for high-density inference and edge deployments (H100, RTX, Jetson Orin).
+                </p>
+            </div>
+
+            <!-- AMD -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- AMD Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="6" width="36" height="36" rx="4" fill="#ED1C24"/>
+                        <text x="24" y="30" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AMD</text>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">AMD</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Powerful open ecosystem alternative with excellent price/performance (MI300X + EPYC).
+                </p>
+            </div>
+
+            <!-- Tenstorrent -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- Tenstorrent Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="20" fill="#00A3E0"/>
+                        <text x="24" y="29" text-anchor="middle" fill="white" font-size="11" font-weight="bold">TT</text>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">Tenstorrent</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Purpose-built for sovereign and on-prem AI with an open hardware philosophy (Wormhole / Ascalon).
+                </p>
+            </div>
+
+            <!-- Apple -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- Apple Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.5 8C28.5 8 26.8 9.3 25.5 11.2C24.2 9.4 22.3 8 20.2 8C16.5 8 13.5 11 13.5 15.2C13.5 20.8 18.8 25.5 24 30.5C29.2 25.5 34.5 20.8 34.5 15.2C34.5 11 31.5 8 27.8 8H30.5Z" fill="#A2AAAD"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">Apple Silicon</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Best-in-class performance per watt for local and edge inference (M4 Ultra and Pro series).
+                </p>
+            </div>
+
+            <!-- Intel Gaudi -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- Intel Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="4" y="10" width="40" height="28" rx="3" fill="#0071C5"/>
+                        <text x="24" y="29" text-anchor="middle" fill="white" font-size="13" font-weight="bold">intel</text>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">Intel Gaudi</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Enterprise-grade inference with strong software support and competitive performance.
+                </p>
+            </div>
+
+            <!-- Qualcomm -->
+            <div class="group bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+                <div class="mb-6">
+                    <!-- Qualcomm Logo SVG -->
+                    <svg width="42" height="42" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 6L42 15V33L24 42L6 33V15L24 6Z" fill="#00ADEF"/>
+                        <circle cx="24" cy="24" r="8" fill="#1A1A1A"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-2">Qualcomm</h3>
+                <p class="text-zinc-400 text-[15px] leading-relaxed flex-1">
+                    Efficient edge inference ideal for distributed and remote sovereign deployments.
+                </p>
+            </div>
+
         </div>
     </section>
 
