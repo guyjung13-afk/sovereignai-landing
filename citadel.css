@@ -102,8 +102,10 @@ h1 {
     line-height: 0.9; margin-bottom: 2rem; text-transform: uppercase;
 }
 
-.hero h1 {
+.hero h1,
+section h1.text-6xl {
     text-transform: none;
+    margin-bottom: 0;
 }
 
 h1 span.gold { color: var(--gold); text-shadow: 0 0 35px var(--gold-glow); }
