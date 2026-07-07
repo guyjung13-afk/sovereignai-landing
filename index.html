@@ -67,21 +67,27 @@
     <!-- ========================================
          HERO
     ========================================= -->
-    <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <section class="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center opacity-0 translate-y-4 transition-all duration-700 ease-out" id="hero-section">
         <div class="max-w-4xl mx-auto">
-            <!-- Main Brand Line -->
+
+            <!-- Top Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2px] font-mono mb-6">
+                SOVEREIGN INFRASTRUCTURE
+            </div>
+
+            <!-- Main Headline -->
             <h1 class="text-6xl md:text-7xl font-bold tracking-tighter text-white">
                 SovereignAI
             </h1>
 
             <!-- Tagline -->
-            <p class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-white">
+            <p class="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-white">
                 Your AI. Your Data. Your Privacy.
             </p>
 
             <!-- Subheadline -->
             <p class="mt-6 max-w-2xl mx-auto text-lg text-zinc-400">
-                An elegantly simple architecture built on operator-owned hardware and local models.       It delivers full AI capability without cloud dependency — and continues running even when internet or Wi-Fi is unavailable.
+                An elegantly simple architecture built on operator-owned hardware and local models.       It delivers full AI capability without cloud dependency — and continues running even when connectivity is unavailable.
             </p>
 
             <!-- CTAs -->
@@ -93,8 +99,23 @@
                     See the Architecture
                 </a>
             </div>
+
         </div>
     </section>
+
+    <script>
+        // Tasteful entrance effect for the hero
+        window.addEventListener('load', () => {
+            const hero = document.getElementById('hero-section');
+            if (hero) {
+                // Small delay for smoother feel
+                setTimeout(() => {
+                    hero.classList.remove('opacity-0', 'translate-y-4');
+                    hero.classList.add('opacity-100', 'translate-y-0');
+                }, 150);
+            }
+        });
+    </script>
 
     <section id="substrate">
         <div class="container">
