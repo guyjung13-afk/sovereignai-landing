@@ -70,12 +70,14 @@
         }, { passive: true });
     }
 
-    // Scramble text
+    // Scramble text (once per heading on scroll-in)
     if (!reducedMotion) {
         document.querySelectorAll('.scramble-target').forEach(function (target) {
             var originalText = target.innerText;
             var scrambleChars = '!<>-_\\/[]{}—=+*^?';
             var scrambleFrame = 0;
+            var hasScrambled = false;
+
             function runScramble() {
                 if (scrambleFrame < 25) {
                     target.innerText = originalText.split('').map(function () {
@@ -87,9 +89,16 @@
                     target.innerText = originalText;
                 }
             }
-            var scrambleObserver = new IntersectionObserver(function (e) {
-                if (e[0].isIntersecting) runScramble();
-            });
+
+            var scrambleObserver = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !hasScrambled) {
+                    hasScrambled = true;
+                    scrambleFrame = 0;
+                    runScramble();
+                    scrambleObserver.disconnect();
+                }
+            }, { threshold: 0.4 });
+
             scrambleObserver.observe(target);
         });
     }
