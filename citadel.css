@@ -13,7 +13,11 @@
 * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
 body {
-    background: var(--obsidian);
+    background-color: #09090b;
+    background-image:
+        linear-gradient(rgba(63, 63, 70, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(63, 63, 70, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
     color: #F4F4F4;
     font-family: var(--font-sans);
     line-height: 1.6;
@@ -26,12 +30,6 @@ section[id] { scroll-margin-top: var(--nav-height); }
 canvas#resonant-field {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1; pointer-events: none; opacity: 0.25;
-}
-
-.grid-bg {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-image: linear-gradient(var(--steel-dim) 1px, transparent 1px), linear-gradient(90deg, var(--steel-dim) 1px, transparent 1px);
-    background-size: 80px 80px; opacity: 0.12;
 }
 
 nav {
@@ -132,7 +130,8 @@ h1 span.gold { color: var(--gold); text-shadow: 0 0 35px var(--gold-glow); }
 }
 
 section {
-    padding: 10rem 2rem; position: relative; z-index: 2; border-top: 1px solid var(--steel-dim);
+    position: relative;
+    z-index: 2;
 }
 
 .container { max-width: 1100px; margin: 0 auto; }
