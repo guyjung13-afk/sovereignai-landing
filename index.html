@@ -199,55 +199,62 @@
             </p>
         </div>
 
-        <div id="form-status" class="hidden mb-6 rounded-2xl border px-4 py-3 text-center font-mono text-sm tracking-wide" role="status" aria-live="polite"></div>
-
         <form id="briefing-form" action="https://formsubmit.co/ajax/guy@sovereignai.llc" method="POST"
               class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 md:p-10 space-y-6">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="name" class="block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2">Full Name</label>
-                    <input type="text" id="name" name="name" required autocomplete="name" placeholder="IDENT_NAME"
-                           class="w-full bg-zinc-950/60 border border-zinc-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-colors">
+                    <label for="name" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">IDENT_NAME</label>
+                    <input type="text" id="name" name="name" required autocomplete="name"
+                           class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                           placeholder="Alex Rivera">
                 </div>
                 <div>
-                    <label for="org" class="block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2">Organization</label>
-                    <input type="text" id="org" name="org" required autocomplete="organization" placeholder="ORG_INSTITUTION"
-                           class="w-full bg-zinc-950/60 border border-zinc-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-colors">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="role" class="block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2">Role</label>
-                    <input type="text" id="role" name="role" required autocomplete="organization-title" placeholder="IDENT_ROLE"
-                           class="w-full bg-zinc-950/60 border border-zinc-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-colors">
-                </div>
-                <div>
-                    <label for="sector" class="block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2">Sector</label>
-                    <select id="sector" name="sector" required
-                            class="w-full bg-zinc-950/60 border border-zinc-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-colors cursor-pointer">
-                        <option value="" disabled selected class="bg-zinc-950 text-zinc-500">DOMAIN_SECTOR</option>
-                        <option value="Energy" class="bg-zinc-950">Energy</option>
-                        <option value="Defense" class="bg-zinc-950">Defense</option>
-                        <option value="Healthcare" class="bg-zinc-950">Healthcare</option>
-                        <option value="Law" class="bg-zinc-950">Law</option>
-                        <option value="Other" class="bg-zinc-950">Other Institutional</option>
-                    </select>
+                    <label for="email" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">IDENT_EMAIL</label>
+                    <input type="email" id="email" name="email" required autocomplete="email"
+                           class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                           placeholder="alex.rivera@energyops.com">
                 </div>
             </div>
 
             <div>
-                <label for="message" class="block text-xs font-mono uppercase tracking-[0.15em] text-zinc-500 mb-2">Briefing Requirements</label>
-                <textarea id="message" name="message" rows="5" required placeholder="BRIEFING_REQUIREMENTS — objectives, timeline, operational context..."
-                          class="w-full resize-y bg-zinc-950/60 border border-zinc-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 transition-colors"></textarea>
+                <label for="organization" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">ORGANIZATION &amp; ROLE</label>
+                <input type="text" id="organization" name="organization" required autocomplete="organization"
+                       class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                       placeholder="Director of Infrastructure, Alpha Gen">
             </div>
 
+            <div>
+                <label for="message" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">BRIEFING FOCUS</label>
+                <textarea id="message" name="message" rows="5" required
+                          class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 rounded-3xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none transition-colors resize-y"
+                          placeholder="On-prem agent deployment for PI System telemetry, regulatory data residency requirements, or multi-node sovereign runtime architecture..."></textarea>
+            </div>
+
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
             <button type="submit" id="submit-btn"
-                    class="w-full rounded-xl bg-amber-500 px-6 py-4 font-mono text-sm font-bold uppercase tracking-[0.25em] text-zinc-950 transition-all hover:bg-amber-400 hover:shadow-[0_0_32px_rgba(245,158,11,0.2)] disabled:cursor-wait disabled:opacity-60">
-                <span class="btn-text">Initiate Transfer</span>
+                    class="w-full md:w-auto group inline-flex items-center justify-center gap-3 bg-white hover:bg-amber-50 active:bg-white text-zinc-950 font-semibold px-10 py-3.5 rounded-2xl transition-all active:scale-[0.985] font-mono tracking-wider text-sm disabled:cursor-wait disabled:opacity-60">
+                <span class="btn-text">INITIATE TRANSFER</span>
+                <span class="group-active:translate-x-0.5 transition-transform" aria-hidden="true">→</span>
             </button>
+
+            <p class="text-[11px] text-center text-zinc-500 tracking-wide">
+                All submissions are handled under strict confidentiality. No data egress.
+            </p>
         </form>
+
+        <div id="form-success" class="hidden mt-6 rounded-3xl border border-emerald-900 bg-emerald-950/60 p-8 text-center" role="status" aria-live="polite">
+            <p class="text-emerald-400 font-medium tracking-wide">TRANSMISSION RECEIVED</p>
+            <p class="text-emerald-300/70 text-sm mt-2 max-w-xs mx-auto">
+                We have your request. A member of the SovereignAI team will contact you within 48 hours to schedule the briefing.
+            </p>
+        </div>
+
+        <div id="form-error" class="hidden mt-6 rounded-3xl border border-red-900 bg-red-950/60 p-8 text-center" role="alert">
+            <p class="text-red-400 font-medium tracking-wide">TRANSMISSION FAILED</p>
+            <p class="text-red-300/70 text-sm mt-2">Please try again or contact us directly at guy@sovereignai.llc</p>
+        </div>
     </section>
 
     <footer class="site-footer">
@@ -266,18 +273,14 @@
             var form = document.getElementById('briefing-form');
             if (!form) return;
 
-            var statusEl = document.getElementById('form-status');
+            var successEl = document.getElementById('form-success');
+            var errorEl = document.getElementById('form-error');
             var submitBtn = document.getElementById('submit-btn');
             var btnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
 
-            var statusSuccess = 'mb-6 rounded-2xl border border-amber-500/40 bg-amber-500/5 px-4 py-3 text-center font-mono text-sm tracking-wide text-amber-400';
-            var statusError = 'mb-6 rounded-2xl border border-red-500/40 bg-red-500/5 px-4 py-3 text-center font-mono text-sm tracking-wide text-red-400';
-
-            function setStatus(message, type) {
-                if (!statusEl) return;
-                statusEl.textContent = message;
-                statusEl.className = type === 'success' ? statusSuccess : statusError;
-                statusEl.classList.remove('hidden');
+            function hideFeedback() {
+                if (successEl) successEl.classList.add('hidden');
+                if (errorEl) errorEl.classList.add('hidden');
             }
 
             form.addEventListener('submit', function (e) {
@@ -290,7 +293,7 @@
 
                 if (submitBtn) submitBtn.disabled = true;
                 if (btnText) btnText.textContent = 'TRANSMITTING...';
-                if (statusEl) statusEl.classList.add('hidden');
+                hideFeedback();
 
                 var data = new FormData(form);
                 data.append('_subject', 'New Sovereign Briefing Request');
@@ -305,18 +308,18 @@
                     .then(function (res) { return res.json(); })
                     .then(function (json) {
                         if (json.success === 'true' || json.success === true) {
-                            setStatus('TRANSMISSION RECEIVED — WE WILL RESPOND SHORTLY.', 'success');
-                            form.reset();
+                            form.classList.add('hidden');
+                            if (successEl) successEl.classList.remove('hidden');
                         } else {
                             throw new Error(json.message || 'Submission failed');
                         }
                     })
                     .catch(function () {
-                        setStatus('TRANSMISSION FAILED — RETRY OR CONTACT guy@sovereignai.llc', 'error');
+                        if (errorEl) errorEl.classList.remove('hidden');
                     })
                     .finally(function () {
                         if (submitBtn) submitBtn.disabled = false;
-                        if (btnText) btnText.textContent = 'Initiate Transfer';
+                        if (btnText) btnText.textContent = 'INITIATE TRANSFER';
                     });
             });
         })();
