@@ -103,8 +103,7 @@ h1 {
 }
 
 .hero h1 {
-    text-transform: none; letter-spacing: inherit; font-size: inherit;
-    font-weight: inherit; line-height: inherit;
+    text-transform: none;
 }
 
 h1 span.gold { color: var(--gold); text-shadow: 0 0 35px var(--gold-glow); }
