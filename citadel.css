@@ -138,8 +138,7 @@ section {
 }
 
 h2 {
-    font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800;
-    margin-bottom: 3.5rem; letter-spacing: -0.02em; line-height: 1.1;
+    margin-bottom: 3.5rem; line-height: 1.1;
 }
 
 .substrate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
