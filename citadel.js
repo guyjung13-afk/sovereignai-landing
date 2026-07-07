@@ -94,20 +94,4 @@
         });
     }
 
-    // Hero staggered entrance
-    var heroReveals = document.querySelectorAll('#hero-section .hero-reveal');
-    if (heroReveals.length) {
-        if (reducedMotion) {
-            heroReveals.forEach(function (el) { el.classList.add('is-visible'); });
-        } else {
-            window.addEventListener('load', function () {
-                heroReveals.forEach(function (el, i) {
-                    setTimeout(function () {
-                        el.classList.add('is-visible');
-                    }, 200 + i * 180);
-                });
-            });
-        }
-    }
-
 })();

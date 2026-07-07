@@ -65,34 +65,56 @@
     </nav>
 
     <!-- ========================================
-         HERO
+         HERO — Enhanced
     ========================================= -->
-    <section id="hero-section" class="hero-section max-w-5xl mx-auto px-6 pt-20 pb-24 text-center border-t-0">
+    <section class="max-w-5xl mx-auto px-6 pt-24 pb-24 text-center opacity-0 translate-y-6 transition-all duration-700 ease-out" id="hero-section">
         <div class="max-w-4xl mx-auto">
 
-            <h1 class="hero-reveal text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-100">
-                Sovereign<span class="text-amber-400 hero-glow">AI</span>
+            <!-- Top Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2.5px] font-mono mb-8">
+                SOVEREIGN INFRASTRUCTURE
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-none">
+                SovereignAI
             </h1>
 
-            <p class="hero-reveal mt-4 text-2xl md:text-3xl font-medium tracking-tight text-zinc-300">
-                Your AI. Your Data. <span class="text-amber-400 hero-glow">Your Privacy.</span>
+            <!-- Tagline -->
+            <p class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-white">
+                Your AI. Your Data. Your Privacy.
             </p>
 
-            <p class="hero-reveal mt-6 max-w-xl mx-auto text-base md:text-lg text-zinc-500 leading-relaxed">
-                Local intelligence on your hardware. No cloud dependency. No data leaving your perimeter.
+            <!-- Subheadline -->
+            <p class="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-zinc-400 leading-relaxed">
+                An elegantly simple architecture built on operator-owned hardware and local models.       It delivers full AI capability without cloud dependency — and continues running even when connectivity is unavailable.
             </p>
 
-            <div class="hero-reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#inquiry" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-amber-50 active:bg-white text-zinc-950 font-semibold px-8 py-3.5 rounded-2xl transition-all active:scale-[0.985]">
+            <!-- CTAs -->
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#inquiry" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-amber-50 active:bg-white text-zinc-950 font-semibold px-10 py-4 rounded-2xl text-base transition-all active:scale-[0.985]">
                     Request Briefing
                 </a>
-                <a href="#architecture" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-amber-500/40 hover:text-amber-400 text-zinc-300 font-medium px-8 py-3.5 rounded-2xl transition-all">
+                <a href="#architecture" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 text-white font-medium px-10 py-4 rounded-2xl text-base transition-all">
                     See the Architecture
                 </a>
             </div>
 
         </div>
     </section>
+
+    <script>
+        // Tasteful entrance effect
+        window.addEventListener('load', () => {
+            const hero = document.getElementById('hero-section');
+            if (hero) {
+                setTimeout(() => {
+                    hero.classList.remove('opacity-0', 'translate-y-6');
+                    hero.classList.add('opacity-100', 'translate-y-0');
+                }, 120);
+            }
+        });
+    </script>
 
     <section id="substrate">
         <div class="container">
