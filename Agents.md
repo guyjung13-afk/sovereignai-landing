@@ -52,22 +52,39 @@ When evaluating changes, prioritize (in rough order):
 | Windows  | `.\polish-loop.ps1 -Target "hero section"` |
 | bash     | `./polish-loop.sh "hero section"` |
 | launcher | `python polish-loop.py "hero section"` |
+| Unattended worktree | `.\polish-loop.ps1 -Target "…" -MaxRounds 4 -MaxMinutes 5 -AutoKeep -SkipPull -SkipBranchCreate` |
+
+See **`docs/polish-loop-lessons.md`** for multi-agent failures/fixes (2026-07-09).
 
 **End-to-end flow (automated by the scripts)**
 
 1. **Preflight** — require `git` + `grok` CLI; abort if not a git repo.
-2. **Sync** — `git checkout main` + `git pull origin main` (unless skip).
-3. **Clean slate** — if site files are dirty, offer stash; refuse to clobber silent work.
-4. **Experiment branch** — `polish-experiment-YYYYMMDD-HHMM`.
-5. **Round loop** (default max 6):
+2. **Sync** — `git checkout main` + `git pull origin main` (unless `-SkipPull`).
+3. **Clean slate** — if site files are dirty, offer stash (or auto-stash with `-AutoKeep`); refuse to clobber silent work.
+4. **Experiment branch** — `polish-experiment-YYYYMMDD-HHmmss` (unless `-SkipBranchCreate` on a worktree branch).
+5. **Round loop** (default max 6; optional `-MaxMinutes` wall clock — stop at first limit):
    - Ensure site files match HEAD.
-   - `grok -p … --permission-mode acceptEdits --max-turns 30` with AGENTS.md process prompt.
-   - Scope: one focused area only; agent applies file edits but does **not** commit.
+   - Invoke grok via **`--prompt-file`** (never long inline `-p` on Windows) + `--permission-mode acceptEdits --max-turns 30`.
+   - Scope: one focused area only; agent applies file edits but does **not** commit (outer loop commits).
    - Show `git status` / diffstat for site files only (`index.html`, `citadel.css`, `citadel.js`, subpages).
-   - Human gate: **keep** | **skip** | **stop**.
+   - Human gate: **keep** | **skip** | **stop** (or `-AutoKeep` for unattended candidates).
    - **keep** → stage site files only → commit `polish(<target>): round N winner`.
    - **skip** → `git restore` site files only (never `git clean` the whole repo).
-6. **Ship** — print merge commands, or use `-MergeWhenDone` / `MERGE_WHEN_DONE=1` to merge to `main` and `git push origin main`.
+6. **Ship** — print merge commands, or use `-MergeWhenDone` / `MERGE_WHEN_DONE=1` **only after human review**. Do not auto-push mid-experiment.
+
+**Parallel multi-agent**
+
+- One **git worktree + branch per section** (hero / foundation / architecture / inquiry).
+- Orchestrator picks best pass per agent, cherry-picks onto an integrate branch, verifies anchors, then pushes `main` only on approval.
+- Expect `citadel.css` conflicts when merging multiple section agents — resolve by keeping both section blocks.
+
+**Fragile areas (do not regress)**
+
+| Area | Rule |
+|------|------|
+| `#architecture` `.nodal-stack` | Rail/spine **inside** panel; no negative-left overflow; keep CITADEL→ENCLAVE→SPIRE→VAULT |
+| `#inquiry` Secure Channel | Operator-clear labels; local `.hidden`; FormSubmit + field ids intact; CTA = Request Briefing |
+| Shared | Preserve `#hero-section`, `#foundation`, `#manifesto`, `#verticals`, `#hardware`, `scramble-target` on h2s |
 
 **After ship:** hard-refresh https://sovereignai.llc (GitHub Pages may lag briefly).
 
