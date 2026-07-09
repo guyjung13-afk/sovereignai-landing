@@ -566,7 +566,7 @@
             <div id="form-success" class="inquiry__status inquiry__status--success hidden" role="status" aria-live="polite">
                 <p class="inquiry__status-title">Briefing Request Received</p>
                 <p class="inquiry__status-body">
-                    We have your request. A member of the SovereignAI team will contact you within 48 hours to schedule the briefing.
+                    Request received. A SovereignAI operator will contact you within 48 hours to schedule the private briefing.
                 </p>
             </div>
 
@@ -597,9 +597,14 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const btn = form.querySelector('button[type="submit"]');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = 'TRANSMITTING...';
-                btn.disabled = true;
+                const label = btn ? btn.querySelector('.btn-text') : null;
+                const originalLabel = label ? label.textContent : (btn ? btn.innerHTML : '');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.setAttribute('aria-busy', 'true');
+                    if (label) label.textContent = 'Sending...';
+                    else btn.textContent = 'Sending...';
+                }
 
                 try {
                     const formData = new FormData(form);
@@ -609,10 +614,10 @@
                         headers: { 'Accept': 'application/json' }
                     });
 
-                    const json = await res.json();
+                    const json = await res.json().catch(() => ({}));
                     if (res.ok && (json.success === true || json.success === 'true')) {
                         form.reset();
-                        form.style.display = 'none';
+                        form.classList.add('hidden');
                         success.classList.remove('hidden');
                         error.classList.add('hidden');
                     } else {
@@ -621,9 +626,12 @@
                 } catch {
                     error.classList.remove('hidden');
                     success.classList.add('hidden');
-                } finally {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.removeAttribute('aria-busy');
+                        if (label) label.textContent = originalLabel;
+                        else btn.innerHTML = originalLabel;
+                    }
                 }
             });
         }
