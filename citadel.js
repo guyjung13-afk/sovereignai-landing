@@ -62,29 +62,58 @@
         document.getElementById('resonant-field').style.display = 'none';
     }
 
-    // Sigil scroll rotation
+    // Hero entrance + subtle sigil parallax
+    var hero = document.getElementById('hero-section');
+    if (hero && !reducedMotion) {
+        hero.classList.add('is-pending');
+        var reveal = function () {
+            // Force reflow so the pending state is painted before reveal
+            void hero.offsetWidth;
+            hero.classList.remove('is-pending');
+            hero.classList.add('is-ready');
+        };
+        if (document.readyState === 'complete') {
+            setTimeout(reveal, 80);
+        } else {
+            window.addEventListener('load', function () {
+                setTimeout(reveal, 80);
+            });
+        }
+    }
+
     var sigil = document.getElementById('hero-sigil');
     if (sigil && !reducedMotion) {
+        var sigilRaf = 0;
         window.addEventListener('scroll', function () {
-            sigil.style.transform = 'rotate(' + (window.scrollY * 0.05) + 'deg)';
+            if (sigilRaf) return;
+            sigilRaf = requestAnimationFrame(function () {
+                sigil.style.transform = 'rotate(' + (window.scrollY * 0.04) + 'deg)';
+                sigilRaf = 0;
+            });
         }, { passive: true });
     }
 
-    // Scramble text (once per heading on scroll-in)
+    // Scramble text (once per heading on scroll-in) — snappy: ~280ms total
     if (!reducedMotion) {
         document.querySelectorAll('.scramble-target').forEach(function (target) {
             var originalText = target.innerText;
             var scrambleChars = '!<>-_\\/[]{}—=+*^?';
             var scrambleFrame = 0;
             var hasScrambled = false;
+            var totalFrames = 9;
+            var frameMs = 28;
 
             function runScramble() {
-                if (scrambleFrame < 25) {
-                    target.innerText = originalText.split('').map(function () {
+                if (scrambleFrame < totalFrames) {
+                    // Progressively lock correct characters from the left
+                    var settled = Math.floor((scrambleFrame / totalFrames) * originalText.length);
+                    target.innerText = originalText.split('').map(function (ch, i) {
+                        if (ch === ' ') return ' ';
+                        if (i < settled) return originalText[i];
                         return scrambleChars[Math.floor(scrambleChars.length * Math.random())];
                     }).join('');
                     scrambleFrame++;
-                    setTimeout(runScramble, 60);
+                    setTimeout(runScramble, frameMs);
                 } else {
                     target.innerText = originalText;
                 }
@@ -97,7 +126,7 @@
                     runScramble();
                     scrambleObserver.disconnect();
                 }
-            }, { threshold: 0.4 });
+            }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
 
             scrambleObserver.observe(target);
         });

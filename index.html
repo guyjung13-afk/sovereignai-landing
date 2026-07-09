@@ -71,56 +71,57 @@
     </nav>
 
     <!-- ========================================
-         HERO — Final Refined
+         HERO
     ========================================= -->
-    <section class="relative z-[2] max-w-5xl mx-auto px-6 pt-32 md:pt-40 pb-24 text-center opacity-0 translate-y-6 transition-all duration-700 ease-out" id="hero-section">
-        <div class="max-w-4xl mx-auto">
+    <section id="hero-section" class="hero-section" aria-labelledby="hero-heading">
+        <div class="hero-section__inner">
 
-            <!-- Top Badge -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2.5px] font-mono mb-8">
-                SOVEREIGN INFRASTRUCTURE
+            <div class="hero-section__sigil" id="hero-sigil" aria-hidden="true">
+                <img src="sigil.svg" alt="" width="64" height="64" decoding="async">
             </div>
 
-            <!-- Main Headline -->
-            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-none">
-                Sovereign<span class="text-amber-400">AI</span>
+            <p class="hero-section__badge">Sovereign Infrastructure</p>
+
+            <h1 id="hero-heading" class="hero-section__title">
+                Sovereign<span class="hero-section__accent">AI</span>
             </h1>
 
-            <!-- Tagline -->
-            <p class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-white">
-                Your AI. Your Data. Your Privacy.
+            <p class="hero-section__promise">Your AI. Your Data. Your Privacy.</p>
+
+            <p class="hero-section__lede">
+                Elegantly simple architecture on operator-owned hardware and local models.
+                Full capability without cloud dependency&mdash;operational even when connectivity is unavailable.
             </p>
 
-            <!-- Subheadline -->
-            <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-zinc-400 leading-relaxed">
-                An elegantly simple architecture built on operator-owned hardware and local models.       It delivers full AI capability without cloud dependency — and continues running even when connectivity is unavailable.
-            </p>
-
-            <!-- CTAs -->
-            <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#inquiry" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-amber-50 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] active:bg-white text-zinc-950 font-semibold px-10 py-4 rounded-2xl text-base transition-all active:scale-[0.985]">
+            <div class="hero-section__actions">
+                <a href="#inquiry" class="hero-section__cta hero-section__cta--primary">
                     Request Briefing
                 </a>
-                <a href="#architecture" class="inline-flex items-center justify-center gap-2 border border-zinc-700 hover:border-zinc-500 hover:bg-zinc-900/80 text-white font-medium px-10 py-4 rounded-2xl text-base transition-all">
+                <a href="#architecture" class="hero-section__cta hero-section__cta--secondary">
                     See the Architecture
                 </a>
             </div>
 
+            <ul class="hero-section__signals" aria-label="Operating principles">
+                <li class="hero-section__signal" style="--signal-i: 0">
+                    <span class="hero-section__signal-key">01</span>
+                    <span class="hero-section__signal-title">On-Premise</span>
+                    <span class="hero-section__signal-val">Bare-metal inference inside your perimeter. No shared tenancy, no remote control plane.</span>
+                </li>
+                <li class="hero-section__signal" style="--signal-i: 1">
+                    <span class="hero-section__signal-key">02</span>
+                    <span class="hero-section__signal-title">Zero Egress</span>
+                    <span class="hero-section__signal-val">No telemetry, no training leakage, no outbound API calls. Data never leaves the enclave.</span>
+                </li>
+                <li class="hero-section__signal" style="--signal-i: 2">
+                    <span class="hero-section__signal-key">03</span>
+                    <span class="hero-section__signal-title">Offline-Capable</span>
+                    <span class="hero-section__signal-val">Full stack continues under air-gap or contested links. Sovereignty does not require uptime elsewhere.</span>
+                </li>
+            </ul>
+
         </div>
     </section>
-
-    <script>
-        // Tasteful entrance effect
-        window.addEventListener('load', () => {
-            const hero = document.getElementById('hero-section');
-            if (hero) {
-                setTimeout(() => {
-                    hero.classList.remove('opacity-0', 'translate-y-6');
-                    hero.classList.add('opacity-100', 'translate-y-0');
-                }, 120);
-            }
-        });
-    </script>
 
     <!-- ========================================
          THE FOUNDATION
