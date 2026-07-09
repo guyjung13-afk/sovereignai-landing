@@ -1108,6 +1108,7 @@ section h2 {
 }
 
 .inquiry__input {
+    color-scheme: dark;
     width: 100%;
     min-height: 3rem;
     padding: 0.75rem 1rem;
@@ -1417,3 +1418,5 @@ section h2 {
         transform: none;
     }
 }
+/* Explicit utility — form success/error rely on this even if Tailwind CDN is slow */
+.hidden { display: none !important; }

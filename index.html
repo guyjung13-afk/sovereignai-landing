@@ -520,13 +520,13 @@
             <form id="briefing-form" class="inquiry__form" action="https://formsubmit.co/ajax/guy@sovereignai.llc" method="POST">
                 <div class="inquiry__row inquiry__row--split">
                     <div class="inquiry__field">
-                        <label for="name" class="inquiry__label">IDENT_NAME</label>
+                        <label for="name" class="inquiry__label">Name</label>
                         <input type="text" id="name" name="name" required autocomplete="name"
                                class="inquiry__input"
                                placeholder="Alex Rivera">
                     </div>
                     <div class="inquiry__field">
-                        <label for="email" class="inquiry__label">IDENT_EMAIL</label>
+                        <label for="email" class="inquiry__label">Email</label>
                         <input type="email" id="email" name="email" required autocomplete="email"
                                class="inquiry__input"
                                placeholder="alex.rivera@energyops.com">
@@ -534,14 +534,14 @@
                 </div>
 
                 <div class="inquiry__field">
-                    <label for="organization" class="inquiry__label">ORGANIZATION &amp; ROLE</label>
+                    <label for="organization" class="inquiry__label">Organization &amp; Role</label>
                     <input type="text" id="organization" name="organization" required autocomplete="organization"
                            class="inquiry__input"
                            placeholder="Director of Infrastructure, Alpha Gen">
                 </div>
 
                 <div class="inquiry__field">
-                    <label for="message" class="inquiry__label">BRIEFING FOCUS</label>
+                    <label for="message" class="inquiry__label">Briefing Focus</label>
                     <textarea id="message" name="message" rows="5" required
                               class="inquiry__input inquiry__input--area"
                               placeholder="On-prem agent deployment for PI System telemetry, regulatory data residency requirements, or multi-node sovereign runtime architecture..."></textarea>
@@ -554,7 +554,7 @@
 
                 <div class="inquiry__actions">
                     <button type="submit" id="submit-btn" class="inquiry__submit">
-                        <span class="btn-text">INITIATE TRANSFER</span>
+                        <span class="btn-text">Request Briefing</span>
                         <span class="inquiry__submit-arrow" aria-hidden="true">→</span>
                     </button>
                     <p class="inquiry__assurance">
@@ -564,14 +564,14 @@
             </form>
 
             <div id="form-success" class="inquiry__status inquiry__status--success hidden" role="status" aria-live="polite">
-                <p class="inquiry__status-title">TRANSMISSION RECEIVED</p>
+                <p class="inquiry__status-title">Briefing Request Received</p>
                 <p class="inquiry__status-body">
                     We have your request. A member of the SovereignAI team will contact you within 48 hours to schedule the briefing.
                 </p>
             </div>
 
             <div id="form-error" class="inquiry__status inquiry__status--error hidden" role="alert">
-                <p class="inquiry__status-title">TRANSMISSION FAILED</p>
+                <p class="inquiry__status-title">Submission Failed</p>
                 <p class="inquiry__status-body">Please try again or contact us directly at <a href="mailto:guy@sovereignai.llc">guy@sovereignai.llc</a></p>
             </div>
         </div>
