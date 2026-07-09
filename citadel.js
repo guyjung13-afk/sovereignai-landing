@@ -93,43 +93,78 @@
         }, { passive: true });
     }
 
-    // Scramble text (once per heading on scroll-in) — snappy: ~280ms total
-    if (!reducedMotion) {
-        document.querySelectorAll('.scramble-target').forEach(function (target) {
-            var originalText = target.innerText;
-            var scrambleChars = '!<>-_\\/[]{}—=+*^?';
-            var scrambleFrame = 0;
-            var hasScrambled = false;
-            var totalFrames = 9;
-            var frameMs = 28;
+    // Scramble text (once per heading on scroll-in).
+    // Fail-safe: always restore original text; never leave garbage mid-string.
+    document.querySelectorAll('.scramble-target').forEach(function (target) {
+        var originalText = (target.textContent || '').replace(/\s+/g, ' ').trim();
+        if (!originalText) return;
+        target.setAttribute('data-scramble-original', originalText);
 
-            function runScramble() {
-                if (scrambleFrame < totalFrames) {
-                    // Progressively lock correct characters from the left
-                    var settled = Math.floor((scrambleFrame / totalFrames) * originalText.length);
-                    target.innerText = originalText.split('').map(function (ch, i) {
-                        if (ch === ' ') return ' ';
-                        if (i < settled) return originalText[i];
-                        return scrambleChars[Math.floor(scrambleChars.length * Math.random())];
-                    }).join('');
-                    scrambleFrame++;
-                    setTimeout(runScramble, frameMs);
-                } else {
-                    target.innerText = originalText;
+        function restore() {
+            target.textContent = originalText;
+        }
+
+        if (reducedMotion) {
+            restore();
+            return;
+        }
+
+        // Prefer glyphs that do not look like broken markup (avoid \ / [ ] { })
+        var scrambleChars = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#@$%*+=';
+        var totalFrames = 10;
+        var frameMs = 26;
+        var hasScrambled = false;
+        var timer = 0;
+        var failSafe = 0;
+
+        function runScramble(frame) {
+            if (frame >= totalFrames) {
+                restore();
+                if (failSafe) {
+                    clearTimeout(failSafe);
+                    failSafe = 0;
                 }
+                return;
             }
 
-            var scrambleObserver = new IntersectionObserver(function (entries) {
-                if (entries[0].isIntersecting && !hasScrambled) {
-                    hasScrambled = true;
-                    scrambleFrame = 0;
-                    runScramble();
-                    scrambleObserver.disconnect();
+            var settled = Math.floor((frame / totalFrames) * originalText.length);
+            var out = '';
+            for (var i = 0; i < originalText.length; i++) {
+                var ch = originalText.charAt(i);
+                if (ch === ' ' || ch === '\u00a0' || ch === '-' || ch === '\u2014' || ch === '\u2013') {
+                    out += ch;
+                } else if (i < settled) {
+                    out += ch;
+                } else {
+                    out += scrambleChars.charAt(Math.floor(Math.random() * scrambleChars.length));
                 }
-            }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
+            }
+            target.textContent = out;
+            timer = window.setTimeout(function () {
+                runScramble(frame + 1);
+            }, frameMs);
+        }
 
-            scrambleObserver.observe(target);
+        var scrambleObserver = new IntersectionObserver(function (entries) {
+            if (!entries[0] || !entries[0].isIntersecting || hasScrambled) return;
+            hasScrambled = true;
+            scrambleObserver.disconnect();
+
+            // Absolute fail-safe: never leave scrambled text longer than ~1s
+            failSafe = window.setTimeout(restore, totalFrames * frameMs + 400);
+            runScramble(0);
+        }, { threshold: 0.2, rootMargin: '0px 0px -5% 0px' });
+
+        scrambleObserver.observe(target);
+
+        // If tab sleeps mid-animation, restore immediately
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                if (timer) clearTimeout(timer);
+                if (failSafe) clearTimeout(failSafe);
+                restore();
+            }
         });
-    }
+    });
 
 })();
