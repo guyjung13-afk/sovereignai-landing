@@ -505,78 +505,75 @@
     </section>
 
     <!-- ========================================
-         CLANDESTINE BRIEFING — Refined
+         CLANDESTINE BRIEFING — Primary conversion
     ========================================= -->
-    <section id="inquiry" class="max-w-3xl mx-auto px-6 py-24 border-t border-zinc-800">
-        <div class="text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5 text-amber-400 text-xs tracking-[2px] font-mono mb-4">
-                SECURE CHANNEL
-            </div>
-            <h2 class="scramble-target text-4xl md:text-5xl tracking-tight font-bold text-white">Clandestine Briefing</h2>
-            <p class="mt-3 text-lg text-zinc-400 max-w-md mx-auto">
-                Request a private technical briefing. Qualified inquiries receive a response within 48 hours.
-            </p>
-        </div>
+    <section id="inquiry" class="inquiry" aria-labelledby="inquiry-heading">
+        <div class="inquiry__shell">
+            <header class="inquiry__header">
+                <p class="inquiry__badge">SECURE CHANNEL</p>
+                <h2 id="inquiry-heading" class="scramble-target inquiry__title">Clandestine Briefing</h2>
+                <p class="inquiry__lede">
+                    Request a private technical briefing. Qualified inquiries receive a response within 48 hours.
+                </p>
+            </header>
 
-        <form id="briefing-form" action="https://formsubmit.co/ajax/guy@sovereignai.llc" method="POST"
-              class="bg-zinc-900/80 border border-zinc-800 rounded-3xl p-8 md:p-10 space-y-6">
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">IDENT_NAME</label>
-                    <input type="text" id="name" name="name" required autocomplete="name"
-                           class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/30 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 transition-colors"
-                           placeholder="Alex Rivera">
+            <form id="briefing-form" class="inquiry__form" action="https://formsubmit.co/ajax/guy@sovereignai.llc" method="POST">
+                <div class="inquiry__row inquiry__row--split">
+                    <div class="inquiry__field">
+                        <label for="name" class="inquiry__label">IDENT_NAME</label>
+                        <input type="text" id="name" name="name" required autocomplete="name"
+                               class="inquiry__input"
+                               placeholder="Alex Rivera">
+                    </div>
+                    <div class="inquiry__field">
+                        <label for="email" class="inquiry__label">IDENT_EMAIL</label>
+                        <input type="email" id="email" name="email" required autocomplete="email"
+                               class="inquiry__input"
+                               placeholder="alex.rivera@energyops.com">
+                    </div>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">IDENT_EMAIL</label>
-                    <input type="email" id="email" name="email" required autocomplete="email"
-                           class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/30 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 transition-colors"
-                           placeholder="alex.rivera@energyops.com">
+
+                <div class="inquiry__field">
+                    <label for="organization" class="inquiry__label">ORGANIZATION &amp; ROLE</label>
+                    <input type="text" id="organization" name="organization" required autocomplete="organization"
+                           class="inquiry__input"
+                           placeholder="Director of Infrastructure, Alpha Gen">
                 </div>
+
+                <div class="inquiry__field">
+                    <label for="message" class="inquiry__label">BRIEFING FOCUS</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="inquiry__input inquiry__input--area"
+                              placeholder="On-prem agent deployment for PI System telemetry, regulatory data residency requirements, or multi-node sovereign runtime architecture..."></textarea>
+                </div>
+
+                <!-- Email formatting helpers (FormSubmit) -->
+                <input type="hidden" name="_subject" value="New SovereignAI Clandestine Briefing Request">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_gotcha" class="inquiry__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <div class="inquiry__actions">
+                    <button type="submit" id="submit-btn" class="inquiry__submit">
+                        <span class="btn-text">INITIATE TRANSFER</span>
+                        <span class="inquiry__submit-arrow" aria-hidden="true">→</span>
+                    </button>
+                    <p class="inquiry__assurance">
+                        All submissions are handled under strict confidentiality. No data egress.
+                    </p>
+                </div>
+            </form>
+
+            <div id="form-success" class="inquiry__status inquiry__status--success hidden" role="status" aria-live="polite">
+                <p class="inquiry__status-title">TRANSMISSION RECEIVED</p>
+                <p class="inquiry__status-body">
+                    We have your request. A member of the SovereignAI team will contact you within 48 hours to schedule the briefing.
+                </p>
             </div>
 
-            <div>
-                <label for="organization" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">ORGANIZATION &amp; ROLE</label>
-                <input type="text" id="organization" name="organization" required autocomplete="organization"
-                       class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/30 rounded-2xl px-4 py-3 text-white placeholder-zinc-500 transition-colors"
-                       placeholder="Director of Infrastructure, Alpha Gen">
+            <div id="form-error" class="inquiry__status inquiry__status--error hidden" role="alert">
+                <p class="inquiry__status-title">TRANSMISSION FAILED</p>
+                <p class="inquiry__status-body">Please try again or contact us directly at <a href="mailto:guy@sovereignai.llc">guy@sovereignai.llc</a></p>
             </div>
-
-            <div>
-                <label for="message" class="block text-sm font-medium text-zinc-300 mb-2 font-mono tracking-wide">BRIEFING FOCUS</label>
-                <textarea id="message" name="message" rows="5" required
-                          class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/30 rounded-3xl px-4 py-3 text-white placeholder-zinc-500 transition-colors resize-y"
-                          placeholder="On-prem agent deployment for PI System telemetry, regulatory data residency requirements, or multi-node sovereign runtime architecture..."></textarea>
-            </div>
-
-            <!-- Email formatting helpers (FormSubmit) -->
-            <input type="hidden" name="_subject" value="New SovereignAI Clandestine Briefing Request">
-            <input type="hidden" name="_template" value="table">
-
-            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-            <button type="submit" id="submit-btn"
-                    class="w-full md:w-auto group inline-flex items-center justify-center gap-3 bg-white hover:bg-amber-50 hover:shadow-[0_0_40px_rgba(212,175,55,0.25)] active:bg-white text-zinc-950 font-semibold px-10 py-3.5 rounded-2xl transition-all active:scale-[0.985] font-mono tracking-wider text-sm disabled:cursor-wait disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/40">
-                <span class="btn-text">INITIATE TRANSFER</span>
-                <span class="group-active:translate-x-0.5 transition-transform" aria-hidden="true">→</span>
-            </button>
-
-            <p class="text-[11px] text-center text-zinc-500 tracking-wide">
-                All submissions are handled under strict confidentiality. No data egress.
-            </p>
-        </form>
-
-        <div id="form-success" class="hidden mt-6 rounded-3xl border border-emerald-900 bg-emerald-950/60 p-8 text-center" role="status" aria-live="polite">
-            <p class="text-emerald-400 font-medium tracking-wide">TRANSMISSION RECEIVED</p>
-            <p class="text-emerald-300/70 text-sm mt-2 max-w-xs mx-auto">
-                We have your request. A member of the SovereignAI team will contact you within 48 hours to schedule the briefing.
-            </p>
-        </div>
-
-        <div id="form-error" class="hidden mt-6 rounded-3xl border border-red-900 bg-red-950/60 p-8 text-center" role="alert">
-            <p class="text-red-400 font-medium tracking-wide">TRANSMISSION FAILED</p>
-            <p class="text-red-300/70 text-sm mt-2">Please try again or contact us directly at guy@sovereignai.llc</p>
         </div>
     </section>
 
