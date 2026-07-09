@@ -46,21 +46,36 @@ nav {
     display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
 }
 
-.nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: white; }
+.nav-logo { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; color: white; }
 
 .nav-sigil {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     display: block;
     flex-shrink: 0;
 }
 
 .nav-logo-text {
-    font-family: var(--font-mono); font-weight: 700; letter-spacing: 0.3em;
-    font-size: 0.9rem; color: var(--steel);
+    display: inline-flex;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--steel);
+    line-height: 1;
 }
 
-.nav-logo-text span { color: var(--gold); }
+/* Wide tracking on SOVEREIGN only — AI stays tight so it doesn't look gappy */
+.nav-logo-word {
+    letter-spacing: 0.22em;
+}
+
+.nav-logo-ai {
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    /* Small join after SOVEREIGN without inheriting wide tracking */
+    margin-left: 0.12em;
+}
 
 .nav-toggle {
     display: none; background: none; border: 1px solid var(--steel-dim);
@@ -95,60 +110,229 @@ nav {
     min-height: min(100vh, 920px);
     padding: calc(var(--nav-height) + 3.5rem) 1.5rem 4.5rem;
     text-align: center;
+    /* Allow data-rain to bleed past the hero edge into the next section */
+    overflow: visible;
+}
+
+/* Subtle data-falling canvas — bleeds + fades into the section below */
+.hero-data-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* Extra length past hero so the trail dissolves into Foundation */
+    height: calc(100% + min(48vh, 460px));
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.9;
+    /* Long soft dissolve: solid through mid-hero, then gradual into next section */
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.5) 5%,
+        rgba(0, 0, 0, 0.95) 12%,
+        rgba(0, 0, 0, 0.92) 42%,
+        rgba(0, 0, 0, 0.55) 58%,
+        rgba(0, 0, 0, 0.28) 72%,
+        rgba(0, 0, 0, 0.1) 86%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.5) 5%,
+        rgba(0, 0, 0, 0.95) 12%,
+        rgba(0, 0, 0, 0.92) 42%,
+        rgba(0, 0, 0, 0.55) 58%,
+        rgba(0, 0, 0, 0.28) 72%,
+        rgba(0, 0, 0, 0.1) 86%,
+        transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
 .hero-section__inner {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 52rem;
     margin: 0 auto;
 }
 
+/* Hero mark — large layered sigil with multi-axis motion */
 .hero-section__sigil {
-    width: 4rem;
-    height: 4rem;
-    margin: 0 auto 1.75rem;
-    filter: drop-shadow(0 0 28px var(--gold-glow));
-    transition: transform 0.15s ease-out;
+    --sigil-size: clamp(7.5rem, 22vw, 11rem);
+    position: relative;
+    width: var(--sigil-size);
+    height: var(--sigil-size);
+    margin: 0 auto 2.25rem;
+}
+
+.hero-section__sigil-parallax {
+    position: relative;
+    width: 100%;
+    height: 100%;
     will-change: transform;
 }
 
-.hero-section__sigil img {
+.hero-section__sigil-aura {
+    position: absolute;
+    inset: -18%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(212, 175, 55, 0.28) 0%, rgba(212, 175, 55, 0.08) 38%, transparent 68%);
+    animation: sigil-aura-breathe 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-section__sigil-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-section__sigil-ring--outer {
+    inset: -10%;
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.08), inset 0 0 18px rgba(212, 175, 55, 0.04);
+    animation: sigil-spin 28s linear infinite;
+}
+
+.hero-section__sigil-ring--outer::before,
+.hero-section__sigil-ring--outer::after {
+    content: '';
+    position: absolute;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.hero-section__sigil-ring--outer::before { top: 0; left: 50%; transform: translate(-50%, -40%); }
+.hero-section__sigil-ring--outer::after { bottom: 0; left: 50%; transform: translate(-50%, 40%); }
+
+.hero-section__sigil-ring--mid {
+    inset: -2%;
+    border: 1px dashed rgba(142, 154, 175, 0.28);
+    animation: sigil-spin-rev 36s linear infinite;
+}
+
+.hero-section__sigil-ring--inner {
+    inset: 10%;
+    border: 1px solid rgba(212, 175, 55, 0.14);
+    animation: sigil-spin 18s linear infinite;
+}
+
+.hero-section__sigil-svg {
+    position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
     display: block;
+    filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 48px rgba(212, 175, 55, 0.12));
+    overflow: visible;
 }
 
-.hero-section__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    margin-bottom: 1.5rem;
-    padding: 0.4rem 1.05rem 0.4rem 0.85rem;
-    border: 1px solid rgba(212, 175, 55, 0.38);
-    border-radius: 9999px;
-    background: linear-gradient(
-        180deg,
-        rgba(212, 175, 55, 0.1) 0%,
-        rgba(212, 175, 55, 0.04) 100%
-    );
-    color: var(--gold);
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    box-shadow: 0 0 24px rgba(212, 175, 55, 0.08);
+.sigil-hex {
+    transform-origin: 50px 50px;
+    animation: sigil-hex-breathe 5.5s ease-in-out infinite;
 }
 
-/* Fortified status marker  -  hierarchy cue above the mark */
-.hero-section__badge::before {
-    content: '';
-    width: 0.4rem;
-    height: 0.4rem;
-    border-radius: 50%;
-    background: var(--gold);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18), 0 0 10px var(--gold-glow);
-    flex-shrink: 0;
+.sigil-lattice {
+    transform-origin: 50px 50px;
+    animation: sigil-lattice-pulse 3.8s ease-in-out infinite;
+}
+
+.sigil-frame {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.sigil-frame--1 { animation: sigil-frame-spin 40s linear infinite; }
+.sigil-frame--2 { animation: sigil-frame-spin-rev 32s linear infinite; }
+.sigil-frame--3 { animation: sigil-frame-spin 24s linear infinite; }
+.sigil-frame--4 {
+    animation: sigil-frame-spin-rev 16s linear infinite, sigil-frame-glow 3.2s ease-in-out infinite;
+}
+
+.sigil-orbit {
+    transform-origin: 0 0;
+    animation: sigil-orbit-spin 12s linear infinite;
+}
+
+.sigil-spokes {
+    transform-origin: 0 0;
+    animation: sigil-orbit-spin-rev 20s linear infinite;
+}
+
+.sigil-nucleus {
+    transform-origin: 0 0;
+    transform-box: fill-box;
+    animation: sigil-nucleus-pulse 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.9));
+}
+
+@keyframes sigil-aura-breathe {
+    0%, 100% { transform: scale(0.92); opacity: 0.55; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes sigil-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes sigil-spin-rev {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes sigil-hex-breathe {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.035); opacity: 1; }
+}
+
+@keyframes sigil-lattice-pulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 0.85; }
+}
+
+@keyframes sigil-frame-spin {
+    from { transform: rotate(15deg); }
+    to { transform: rotate(375deg); }
+}
+
+@keyframes sigil-frame-spin-rev {
+    from { transform: rotate(75deg); }
+    to { transform: rotate(-285deg); }
+}
+
+@keyframes sigil-frame-glow {
+    0%, 100% { opacity: 0.85; stroke-width: 3.2; }
+    50% { opacity: 1; stroke-width: 3.8; }
+}
+
+@keyframes sigil-orbit-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes sigil-orbit-spin-rev {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes sigil-nucleus-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.92; }
+    50% { transform: scale(1.18); opacity: 1; }
 }
 
 .hero-section__title {
@@ -397,7 +581,6 @@ nav {
 
 /* Staggered entrance: .is-pending hides, .is-ready reveals (JS-gated; visible without JS) */
 .hero-section.is-pending .hero-section__sigil,
-.hero-section.is-pending .hero-section__badge,
 .hero-section.is-pending .hero-section__title,
 .hero-section.is-pending .hero-section__promise,
 .hero-section.is-pending .hero-section__lede,
@@ -408,14 +591,12 @@ nav {
 }
 
 .hero-section.is-pending .hero-section__sigil,
-.hero-section.is-pending .hero-section__badge,
 .hero-section.is-pending .hero-section__title,
 .hero-section.is-pending .hero-section__promise,
 .hero-section.is-pending .hero-section__lede,
 .hero-section.is-pending .hero-section__actions,
 .hero-section.is-pending .hero-section__signal,
 .hero-section.is-ready .hero-section__sigil,
-.hero-section.is-ready .hero-section__badge,
 .hero-section.is-ready .hero-section__title,
 .hero-section.is-ready .hero-section__promise,
 .hero-section.is-ready .hero-section__lede,
@@ -430,15 +611,14 @@ nav {
 }
 
 .hero-section.is-ready .hero-section__sigil { opacity: 1; transform: none; transition-delay: 0.05s; }
-.hero-section.is-ready .hero-section__badge { opacity: 1; transform: none; transition-delay: 0.12s; }
-.hero-section.is-ready .hero-section__title { opacity: 1; transform: none; transition-delay: 0.2s; }
-.hero-section.is-ready .hero-section__promise { opacity: 1; transform: none; transition-delay: 0.28s; }
-.hero-section.is-ready .hero-section__lede { opacity: 1; transform: none; transition-delay: 0.36s; }
-.hero-section.is-ready .hero-section__actions { opacity: 1; transform: none; transition-delay: 0.44s; }
+.hero-section.is-ready .hero-section__title { opacity: 1; transform: none; transition-delay: 0.14s; }
+.hero-section.is-ready .hero-section__promise { opacity: 1; transform: none; transition-delay: 0.22s; }
+.hero-section.is-ready .hero-section__lede { opacity: 1; transform: none; transition-delay: 0.3s; }
+.hero-section.is-ready .hero-section__actions { opacity: 1; transform: none; transition-delay: 0.38s; }
 .hero-section.is-ready .hero-section__signal {
     opacity: 1;
     transform: none;
-    transition-delay: calc(0.52s + (var(--signal-i) * 0.09s));
+    transition-delay: calc(0.46s + (var(--signal-i) * 0.09s));
 }
 
 .hero-section.is-ready .hero-section__signal:hover {
@@ -1401,13 +1581,23 @@ section h2 {
 
 @media (prefers-reduced-motion: reduce) {
     .sigil-container { animation: none; }
+    .hero-data-rain { display: none; }
+    .hero-section__sigil-aura,
+    .hero-section__sigil-ring,
+    .sigil-hex,
+    .sigil-lattice,
+    .sigil-frame,
+    .sigil-orbit,
+    .sigil-spokes,
+    .sigil-nucleus {
+        animation: none !important;
+    }
     * { scroll-behavior: auto; }
     .card-hover:hover {
         transform: none;
         box-shadow: none;
     }
     .hero-section.is-pending .hero-section__sigil,
-    .hero-section.is-pending .hero-section__badge,
     .hero-section.is-pending .hero-section__title,
     .hero-section.is-pending .hero-section__promise,
     .hero-section.is-pending .hero-section__lede,

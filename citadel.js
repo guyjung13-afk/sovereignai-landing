@@ -81,13 +81,107 @@
         }
     }
 
-    var sigil = document.getElementById('hero-sigil');
-    if (sigil && !reducedMotion) {
+    // Hero-only data rain (matrix trail) — less prominent; skips if reduced motion
+    (function initDataRain() {
+        var rain = document.getElementById('data-rain');
+        if (!rain || !hero) return;
+
+        if (reducedMotion) {
+            rain.style.display = 'none';
+            return;
+        }
+
+        var ctx = rain.getContext('2d');
+        if (!ctx) return;
+
+        var chars = '01SOVEREIGNAIWALLACEAIRGAPPRIVACYLOCALENCLAVEVAULTSPIRECITADEL'.split('');
+        var fontSize = 13;
+        var drops = [];
+        var intervalId = 0;
+        var heroVisible = true;
+
+        function bleedPx() {
+            // Match CSS: min(48vh, 460px) so glyphs keep falling past the hero line
+            return Math.min(Math.floor(window.innerHeight * 0.48), 460);
+        }
+
+        function sizeCanvas() {
+            var rect = hero.getBoundingClientRect();
+            var w = Math.max(1, Math.floor(rect.width));
+            var h = Math.max(1, Math.floor(rect.height) + bleedPx());
+            var dpr = Math.min(window.devicePixelRatio || 1, 2);
+            rain.width = Math.floor(w * dpr);
+            rain.height = Math.floor(h * dpr);
+            rain.style.width = w + 'px';
+            rain.style.height = h + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            var columns = Math.floor(w / fontSize);
+            drops = Array(Math.max(1, columns)).fill(1);
+            // Seed trail so first frames are not empty
+            ctx.fillStyle = 'rgba(9, 9, 11, 1)';
+            ctx.fillRect(0, 0, w, h);
+        }
+
+        function draw() {
+            if (!heroVisible || document.hidden) return;
+
+            var w = rain.clientWidth;
+            var h = rain.clientHeight;
+            // Soft trail fade (site bg zinc)
+            ctx.fillStyle = 'rgba(9, 9, 11, 0.15)';
+            ctx.fillRect(0, 0, w, h);
+            // Brand gold, lower opacity — less prominent
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.4)';
+            ctx.font = fontSize + 'px "JetBrains Mono", ui-monospace, monospace';
+
+            // Soft vertical falloff so density eases as it enters the next section
+            var heroH = Math.max(1, hero.offsetHeight);
+            for (var i = 0; i < drops.length; i++) {
+                var y = drops[i] * fontSize;
+                // Past hero edge: skip most glyphs so the mask isn't fighting dense rain
+                if (y > heroH && Math.random() > 0.35) {
+                    drops[i]++;
+                    if (y > h && Math.random() > 0.96) drops[i] = 0;
+                    continue;
+                }
+                var text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, y);
+                if (y > h && Math.random() > 0.985) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        sizeCanvas();
+        intervalId = window.setInterval(draw, 45);
+
+        var resizeTimer = 0;
+        window.addEventListener('resize', function () {
+            if (resizeTimer) clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(sizeCanvas, 120);
+        });
+
+        // Pause when hero leaves viewport
+        if ('IntersectionObserver' in window) {
+            var rainObserver = new IntersectionObserver(function (entries) {
+                heroVisible = !!(entries[0] && entries[0].isIntersecting);
+            }, { threshold: 0.05 });
+            rainObserver.observe(hero);
+        }
+    })();
+
+    // Sigil scroll parallax (on inner stage so CSS layer animations keep running)
+    var sigilParallax = document.getElementById('hero-sigil-parallax') || document.getElementById('hero-sigil');
+    if (sigilParallax && !reducedMotion) {
         var sigilRaf = 0;
         window.addEventListener('scroll', function () {
             if (sigilRaf) return;
             sigilRaf = requestAnimationFrame(function () {
-                sigil.style.transform = 'rotate(' + (window.scrollY * 0.04) + 'deg)';
+                var y = window.scrollY || 0;
+                var rot = y * 0.045;
+                var lift = Math.min(y * 0.04, 28);
+                sigilParallax.style.transform =
+                    'translate3d(0,' + (-lift) + 'px,0) rotate(' + rot + 'deg)';
                 sigilRaf = 0;
             });
         }, { passive: true });
