@@ -85,7 +85,7 @@ nav {
     color: var(--gold);
 }
 
-/* ——— Landing hero ——— */
+/* â€”â€”â€” Landing hero â€”â€”â€” */
 .hero-section {
     position: relative;
     z-index: 2;
@@ -140,7 +140,7 @@ nav {
     box-shadow: 0 0 24px rgba(212, 175, 55, 0.08);
 }
 
-/* Fortified status marker — hierarchy cue above the mark */
+/* Fortified status marker â€” hierarchy cue above the mark */
 .hero-section__badge::before {
     content: '';
     width: 0.4rem;
@@ -177,7 +177,7 @@ nav {
     text-wrap: balance;
 }
 
-/* Gold hairline — separates mark from supporting copy */
+/* Gold hairline â€” separates mark from supporting copy */
 .hero-section__promise::after {
     content: '';
     display: block;
@@ -529,7 +529,7 @@ section {
     min-width: 2.25rem;
 }
 
-/* Foundation principles — ordered card row using shared .card system */
+/* Foundation principles â€” ordered card row using shared .card system */
 .foundation-principles {
     list-style: none;
 }
@@ -538,7 +538,7 @@ section {
     height: 100%;
 }
 
-/* Number + mono label stack: scan path is 01 → PERIMETER → title */
+/* Number + mono label stack: scan path is 01 â†’ PERIMETER â†’ title */
 .foundation-principles .card-number {
     margin-bottom: 0.4rem;
     padding-bottom: 0;
@@ -631,7 +631,7 @@ section {
     display: block; font-weight: 600;
 }
 
-/* ——— Sovereign Nodal Stack (#architecture) ——— */
+/* â€”â€”â€” Sovereign Nodal Stack (#architecture) â€”â€”â€” */
 /* Reliable layout: rail lives INSIDE the panel (no negative-left overflow). */
 .nodal-stack {
     --stack-rail: 3px;
@@ -712,7 +712,7 @@ section {
     min-width: 0;
 }
 
-/* Rail node — inside the layer, on the left border (no negative offsets) */
+/* Rail node â€” inside the layer, on the left border (no negative offsets) */
 .nodal-stack__layer::before {
     content: "";
     position: absolute;
@@ -744,7 +744,7 @@ section {
     pointer-events: none;
 }
 
-/* Depth bands: surface brightest → foundation denser */
+/* Depth bands: surface brightest â†’ foundation denser */
 .nodal-stack__layer--l4 {
     border-left-color: rgba(212, 175, 55, 1);
     background:
@@ -866,6 +866,15 @@ section {
     }
 }
 
+
+@media (prefers-reduced-motion: reduce) {
+    .nodal-stack__layer,
+    .nodal-stack__layer::before,
+    .nodal-stack__layer::after {
+        transition: none;
+        animation: none;
+    }
+}
 /* Landing sections control h2 spacing via Tailwind; keep legacy margin for page heroes */
 h2 {
     line-height: 1.1;
@@ -973,13 +982,13 @@ section h2 {
 
 .page-cta { text-align: center; padding-bottom: 6rem; position: relative; z-index: 2; }
 
-/* ——— Clandestine Briefing / Inquiry CTA (primary conversion) ——— */
+/* â€”â€”â€” Clandestine Briefing / Inquiry CTA (primary conversion) â€”â€”â€” */
 .inquiry {
     position: relative;
     z-index: 2;
     padding: 5.5rem 1.5rem 6rem;
     border-top: 1px solid rgba(63, 63, 70, 0.85);
-    /* Soft vault glow — draws the eye without sales flash */
+    /* Soft vault glow â€” draws the eye without sales flash */
     background:
         radial-gradient(ellipse 70% 55% at 50% 0%, rgba(212, 175, 55, 0.07), transparent 62%),
         radial-gradient(ellipse 50% 40% at 50% 100%, rgba(24, 24, 27, 0.9), transparent 70%);
@@ -1029,7 +1038,7 @@ section h2 {
     color: #a1a1aa;
 }
 
-/* Fortified form panel — gold crown edge + enclave frame */
+/* Fortified form panel â€” gold crown edge + enclave frame */
 .inquiry__form {
     position: relative;
     display: flex;
@@ -1107,7 +1116,7 @@ section h2 {
     background: #09090b;
     color: #fff;
     font-family: var(--font-sans);
-    font-size: 1rem; /* ≥16px prevents iOS zoom */
+    font-size: 1rem; /* â‰¥16px prevents iOS zoom */
     line-height: 1.4;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     -webkit-appearance: none;
