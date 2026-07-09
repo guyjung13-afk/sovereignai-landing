@@ -521,9 +521,23 @@ section {
 .card-number {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.125em;
-    color: rgba(212, 175, 55, 0.8);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: rgba(212, 175, 55, 0.9);
     margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    width: fit-content;
+    min-width: 2.25rem;
+}
+
+/* Foundation principles — ordered card row using shared .card system */
+.foundation-principles {
+    list-style: none;
+}
+
+.foundation-principles > .card {
+    height: 100%;
 }
 
 .card-title {
