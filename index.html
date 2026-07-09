@@ -338,55 +338,66 @@
             </p>
         </div>
 
-        <!-- Unified Stack -->
-        <div class="max-w-3xl mx-auto bg-zinc-900 border border-zinc-700 rounded-3xl p-8">
-            <!-- CITADEL -->
-            <div class="flex items-start gap-6 border-l-4 border-l-amber-400 pl-6 pb-5">
-                <div>
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400 mb-1">04 — CITADEL</div>
-                    <div class="text-white font-semibold">Custom-Tailored Agent</div>
-                    <div class="text-zinc-400 mt-1 text-[15px]">
-                        The complete system — a sovereign agent built specifically for your business needs, with full functionality off-grid.
-                    </div>
-                </div>
+        <!-- Unified Stack: surface (04) → foundation (01) -->
+        <div class="nodal-stack max-w-3xl mx-auto">
+            <div class="nodal-stack__orient" aria-hidden="true">
+                <span>Surface</span>
+                <span class="nodal-stack__orient-line"></span>
+                <span>Foundation</span>
             </div>
 
-            <!-- ENCLAVE -->
-            <div class="flex items-start gap-6 border-l-4 border-l-amber-400/85 border-t border-t-zinc-800 pl-6 py-5">
-                <div>
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/90 mb-1">03 — ENCLAVE</div>
-                    <div class="text-white font-semibold">Local Weights, Constraints & Guardrails</div>
-                    <div class="text-zinc-400 mt-1 text-[15px]">
-                        Your models and operational rules run entirely locally, ensuring consistent and controlled behavior.
+            <ol class="nodal-stack__layers" aria-label="Sovereign Nodal Stack from surface to foundation">
+                <!-- CITADEL -->
+                <li class="nodal-stack__layer nodal-stack__layer--l4">
+                    <span class="nodal-stack__index" aria-hidden="true">04</span>
+                    <div class="nodal-stack__body">
+                        <div class="nodal-stack__code">CITADEL</div>
+                        <div class="nodal-stack__title">Custom-Tailored Agent</div>
+                        <p class="nodal-stack__desc">
+                            The complete system — a sovereign agent built specifically for your business needs, with full functionality off-grid.
+                        </p>
                     </div>
-                </div>
-            </div>
+                </li>
 
-            <!-- SPIRE -->
-            <div class="flex items-start gap-6 border-l-4 border-l-amber-400/70 border-t border-t-zinc-800 pl-6 py-5">
-                <div>
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/80 mb-1">02 — SPIRE</div>
-                    <div class="text-white font-semibold">Local Agent</div>
-                    <div class="text-zinc-400 mt-1 text-[15px]">
-                        Intelligent agents that execute tasks directly on your hardware without external systems.
+                <!-- ENCLAVE -->
+                <li class="nodal-stack__layer nodal-stack__layer--l3">
+                    <span class="nodal-stack__index" aria-hidden="true">03</span>
+                    <div class="nodal-stack__body">
+                        <div class="nodal-stack__code">ENCLAVE</div>
+                        <div class="nodal-stack__title">Local Weights, Constraints &amp; Guardrails</div>
+                        <p class="nodal-stack__desc">
+                            Your models and operational rules run entirely locally, ensuring consistent and controlled behavior.
+                        </p>
                     </div>
-                </div>
-            </div>
+                </li>
 
-            <!-- VAULT -->
-            <div class="flex items-start gap-6 border-l-4 border-l-amber-400/55 border-t border-t-zinc-800 pl-6 pt-5">
-                <div>
-                    <div class="font-mono text-xs tracking-[2px] text-amber-400/70 mb-1">01 — VAULT</div>
-                    <div class="text-white font-semibold">Local Storage</div>
-                    <div class="text-zinc-400 mt-1 text-[15px]">
-                        All data and models remain stored locally with zero external exposure.
+                <!-- SPIRE -->
+                <li class="nodal-stack__layer nodal-stack__layer--l2">
+                    <span class="nodal-stack__index" aria-hidden="true">02</span>
+                    <div class="nodal-stack__body">
+                        <div class="nodal-stack__code">SPIRE</div>
+                        <div class="nodal-stack__title">Local Agent</div>
+                        <p class="nodal-stack__desc">
+                            Intelligent agents that execute tasks directly on your hardware without external systems.
+                        </p>
                     </div>
-                </div>
-            </div>
+                </li>
 
+                <!-- VAULT -->
+                <li class="nodal-stack__layer nodal-stack__layer--l1">
+                    <span class="nodal-stack__index" aria-hidden="true">01</span>
+                    <div class="nodal-stack__body">
+                        <div class="nodal-stack__code">VAULT</div>
+                        <div class="nodal-stack__title">Local Storage</div>
+                        <p class="nodal-stack__desc">
+                            All data and models remain stored locally with zero external exposure.
+                        </p>
+                    </div>
+                </li>
+            </ol>
         </div>
 
-        <p class="mt-8 max-w-2xl text-center mx-auto text-zinc-400 text-[15px]">
+        <p class="nodal-stack__footnote mt-8 max-w-2xl text-center mx-auto text-zinc-400 text-[15px]">
             One cohesive system — from secure local storage to a fully autonomous, business-specific agent.
         </p>
 
