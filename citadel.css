@@ -121,47 +121,83 @@ nav {
 .hero-section__badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.75rem;
-    padding: 0.4rem 1rem;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    gap: 0.55rem;
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 1.05rem 0.4rem 0.85rem;
+    border: 1px solid rgba(212, 175, 55, 0.38);
     border-radius: 9999px;
-    background: rgba(212, 175, 55, 0.05);
+    background: linear-gradient(
+        180deg,
+        rgba(212, 175, 55, 0.1) 0%,
+        rgba(212, 175, 55, 0.04) 100%
+    );
     color: var(--gold);
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
+    box-shadow: 0 0 24px rgba(212, 175, 55, 0.08);
+}
+
+/* Fortified status marker — hierarchy cue above the mark */
+.hero-section__badge::before {
+    content: '';
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18), 0 0 10px var(--gold-glow);
+    flex-shrink: 0;
 }
 
 .hero-section__title {
     margin: 0;
     color: #fff;
-    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-size: clamp(3.15rem, 9.5vw, 5.75rem);
     font-weight: 800;
     letter-spacing: -0.045em;
-    line-height: 0.95;
+    line-height: 0.92;
     text-transform: none;
+    text-wrap: balance;
 }
 
 .hero-section__accent {
     color: var(--gold);
-    text-shadow: 0 0 40px var(--gold-glow);
+    text-shadow: 0 0 48px var(--gold-glow), 0 0 2px rgba(212, 175, 55, 0.4);
 }
 
 .hero-section__promise {
-    margin: 1.25rem 0 0;
+    margin: 1.35rem 0 0;
     color: #fafafa;
     font-size: clamp(1.35rem, 3.2vw, 1.875rem);
     font-weight: 600;
     letter-spacing: -0.025em;
     line-height: 1.25;
+    text-wrap: balance;
+}
+
+/* Gold hairline — separates mark from supporting copy */
+.hero-section__promise::after {
+    content: '';
+    display: block;
+    width: 2.75rem;
+    height: 2px;
+    margin: 1.35rem auto 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--gold) 20%,
+        var(--gold) 80%,
+        transparent 100%
+    );
+    opacity: 0.75;
+    border-radius: 1px;
 }
 
 .hero-section__lede {
     max-width: 36rem;
-    margin: 1.5rem auto 0;
+    margin: 1.35rem auto 0;
     color: #a1a1aa;
     font-size: clamp(1.05rem, 2vw, 1.2rem);
     font-weight: 400;
@@ -174,7 +210,7 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 0.875rem;
-    margin-top: 2.25rem;
+    margin-top: 2.35rem;
 }
 
 .hero-section__cta {
@@ -201,16 +237,26 @@ nav {
     outline-offset: 3px;
 }
 
+/* Primary action: high-contrast surface + gold perimeter for brand focal */
 .hero-section__cta--primary {
     background: #fafafa;
     color: #09090b;
     border: 1px solid #fafafa;
-    box-shadow: 0 0 0 0 transparent;
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.35),
+        0 0 28px rgba(212, 175, 55, 0.12),
+        0 8px 24px rgba(0, 0, 0, 0.28);
+    font-weight: 700;
+    letter-spacing: 0.01em;
 }
 
 .hero-section__cta--primary:hover {
     background: #fff;
-    box-shadow: 0 0 36px rgba(212, 175, 55, 0.22);
+    border-color: #fff;
+    box-shadow:
+        0 0 0 1px rgba(212, 175, 55, 0.55),
+        0 0 40px rgba(212, 175, 55, 0.28),
+        0 10px 28px rgba(0, 0, 0, 0.32);
 }
 
 .hero-section__cta--primary:active {
@@ -219,12 +265,14 @@ nav {
 
 .hero-section__cta--secondary {
     background: transparent;
-    color: #f4f4f5;
+    color: #d4d4d8;
     border: 1px solid #3f3f46;
+    font-weight: 500;
 }
 
 .hero-section__cta--secondary:hover {
-    border-color: #71717a;
+    border-color: rgba(212, 175, 55, 0.35);
+    color: #fafafa;
     background: rgba(24, 24, 27, 0.72);
 }
 
