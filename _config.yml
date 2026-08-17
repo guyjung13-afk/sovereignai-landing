@@ -1,0 +1,10 @@
+# Ticket 002 — hide internal files from GitHub Pages (Jekyll).
+# Do not add a _headers file.
+exclude:
+  - README.md
+  - Agents.md
+  - polish-loop.sh
+  - polish-loop.py
+  - polish-loop.ps1
+  - docs
+  - .gitignore
