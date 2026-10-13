@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="citadel.css?v=20260709g">
+    <link rel="stylesheet" href="citadel.css?v=20261013a">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -258,21 +258,45 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Energy -->
+        <div class="verticals-primary grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Energy & SCADA -->
             <div class="card card-hover group">
+                <p class="card-label">PRIMARY DEPLOYMENT</p>
                 <div class="card-header">
                     <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h3 class="card-title">Energy</h3>
+                    <h3 class="card-title-lg">Energy &amp; SCADA</h3>
                 </div>
                 <p class="card-desc">
-                    SCADA-adjacent intelligence for grid optimization, predictive maintenance, and operational continuity. Built for air-gapped critical infrastructure.
+                    SCADA-adjacent intelligence for grid operations, predictive maintenance, and operational continuity. Inference runs inside the OT perimeter on air-gapped hardware &mdash; telemetry never crosses to an external system.
                 </p>
+                <p class="card-footer">GRID &middot; UTILITIES &middot; OT TELEMETRY &middot; AIR-GAPPED SITES</p>
             </div>
+
+            <!-- Privilege-Preserving Enterprise -->
+            <div class="card card-hover group">
+                <p class="card-label">PRIMARY DEPLOYMENT</p>
+                <div class="card-header">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V9a4 4 0 00-8 0v2" />
+                        </svg>
+                    </div>
+                    <h3 class="card-title-lg">Privilege-Preserving Enterprise</h3>
+                </div>
+                <p class="card-desc">
+                    Local document intelligence for privileged and regulated material &mdash; contracts, discovery, risk models, and proprietary strategy. Custom models operate inside your vault; client and institutional data never leave your perimeter.
+                </p>
+                <p class="card-footer">LEGAL &middot; FINANCE &middot; COMPLIANCE &middot; PROPRIETARY DATA</p>
+            </div>
+        </div>
+
+        <p class="verticals-secondary-label">ADJACENT DEPLOYMENTS</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!-- Healthcare -->
             <div class="card card-hover group">
@@ -304,53 +328,8 @@
                 </p>
             </div>
 
-            <!-- Law -->
-            <div class="card card-hover group">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M21 21l-3-1m-3 1l3-9a5.002 5.002 0 00-6.001 0M3 21l3-1" />
-                        </svg>
-                    </div>
-                    <h3 class="card-title">Law</h3>
-                </div>
-                <p class="card-desc">
-                    Privilege-preserving document intelligence. Local LLM review for contracts, discovery, and compliance without exposing client data to external systems.
-                </p>
-            </div>
-
-            <!-- Secure Private Data -->
-            <div class="card card-hover group">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V9a4 4 0 00-8 0v2" />
-                        </svg>
-                    </div>
-                    <h3 class="card-title">Secure Private Data</h3>
-                </div>
-                <p class="card-desc">
-                    Enterprise-grade data vaults with fully local AI processing. Custom models trained on proprietary datasets that never leave your physical perimeter.
-                </p>
-            </div>
-
-            <!-- Finance -->
-            <div class="card card-hover group">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" />
-                        </svg>
-                    </div>
-                    <h3 class="card-title">Finance</h3>
-                </div>
-                <p class="card-desc">
-                    Regulatory-compliant intelligence for fraud detection, risk modeling, and proprietary strategy. Full data residency with no exposure to external systems.
-                </p>
-            </div>
-
             <!-- Manufacturing -->
-            <div class="card card-hover group md:col-span-2 md:max-w-md md:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none lg:w-full">
+            <div class="card card-hover group">
                 <div class="card-header">
                     <div class="card-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -601,7 +580,7 @@
                         <span class="inquiry__submit-arrow" aria-hidden="true">→</span>
                     </button>
                     <p class="inquiry__assurance">
-                        All submissions are handled under strict confidentiality. No data egress.
+                        Handled in confidence. This form is relayed to our inbox by a third-party service (FormSubmit) &mdash; for sensitive details, email <a href="mailto:guy@sovereignai.llc">guy@sovereignai.llc</a> directly. See our <a href="privacy.html">Privacy Policy</a>.
                     </p>
                 </div>
             </form>
@@ -627,7 +606,6 @@
             <a href="mailto:guy@sovereignai.llc">Contact</a>
         </nav>
         <p class="footer-copy">&copy; 2026 SovereignAI LLC. All rights reserved.</p>
-        <p class="footer-heritage">Jung Lineage — Established 1238 | 963 Hz Resonance</p>
     </footer>
 
     <script src="citadel.js?v=20260709g"></script>
