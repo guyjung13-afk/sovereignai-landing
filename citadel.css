@@ -718,7 +718,7 @@ section {
     height: 100%;
 }
 
-/* Number + mono label stack: scan path is 01 â†’ PERIMETER â†’ title */
+/* Number + mono label stack: scan path is 01 → PERIMETER → title */
 .foundation-principles .card-number {
     margin-bottom: 0.4rem;
     padding-bottom: 0;
@@ -924,7 +924,7 @@ section {
     pointer-events: none;
 }
 
-/* Depth bands: surface brightest â†’ foundation denser */
+/* Depth bands: surface brightest → foundation denser */
 .nodal-stack__layer--l4 {
     border-left-color: rgba(212, 175, 55, 1);
     background:
@@ -1308,7 +1308,7 @@ section h2 {
     background: #09090b;
     color: #fff;
     font-family: var(--font-sans);
-    font-size: 1rem; /* â‰¥16px prevents iOS zoom */
+    font-size: 1rem; /* ≥16px prevents iOS zoom */
     line-height: 1.4;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     -webkit-appearance: none;
