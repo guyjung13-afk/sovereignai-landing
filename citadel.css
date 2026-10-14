@@ -1,3 +1,14 @@
+/* Self-hosted variable fonts (latin subset, SIL OFL — see fonts/). One file per
+   family; per-weight faces mirror Google Fonts so weights render as before. */
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 300; font-display: swap; src: url(fonts/inter-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/inter-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/inter-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 800; font-display: swap; src: url(fonts/inter-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 900; font-display: swap; src: url(fonts/inter-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/jetbrains-mono-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/jetbrains-mono-latin-var.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/jetbrains-mono-latin-var.woff2) format('woff2'); }
+
 :root {
     --obsidian: #05070A;
     --obsidian-light: #0A0D12;
@@ -797,7 +808,7 @@ section {
     font-size: 10px;
     font-family: var(--font-mono);
     letter-spacing: 0.1em;
-    color: #71717a;
+    color: #8b8b94;
     transition: color 0.2s ease;
 }
 
@@ -870,7 +881,7 @@ section {
     font-size: 0.625rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #71717a;
+    color: #8b8b94;
 }
 
 .nodal-stack__orient-line {
@@ -1450,7 +1461,7 @@ section h2 {
     font-size: 0.7rem;
     letter-spacing: 0.04em;
     line-height: 1.45;
-    color: #71717a;
+    color: #8b8b94;
 }
 
 .inquiry__assurance a {
