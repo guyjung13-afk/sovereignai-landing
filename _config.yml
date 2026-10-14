@@ -1,5 +1,7 @@
 # GitHub Pages build config. The site is plain static HTML/CSS/JS;
 # this file only keeps internal tooling and agent docs off the public domain.
+include:
+  - .well-known
 exclude:
   - Agents.md
   - AGENTS.md

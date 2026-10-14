@@ -1,18 +1,20 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SovereignAI — Your AI. Your Data. Your Privacy.</title>
+    <title>SovereignAI &mdash; Your AI. Your Data. Your Privacy.</title>
     <meta name="description" content="SovereignAI builds AI systems that organizations own and control. Hardware-rooted, air-gapped, zero cloud dependency.">
     <meta name="theme-color" content="#05070A">
-    <meta property="og:title" content="SovereignAI — Infrastructure Sovereignty">
+    <link rel="canonical" href="https://sovereignai.llc/">
+    <meta property="og:site_name" content="SovereignAI">
+    <meta property="og:title" content="SovereignAI &mdash; Infrastructure Sovereignty">
     <meta property="og:description" content="Your AI. Your Data. Your Privacy. Department-Native Intelligence with absolute operational sovereignty.">
     <meta property="og:image" content="https://sovereignai.llc/og-image.svg">
-    <meta property="og:url" content="https://sovereignai.llc">
+    <meta property="og:url" content="https://sovereignai.llc/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SovereignAI — Infrastructure Sovereignty">
+    <meta name="twitter:title" content="SovereignAI &mdash; Infrastructure Sovereignty">
     <meta name="twitter:description" content="Your AI. Your Data. Your Privacy.">
     <meta name="twitter:image" content="https://sovereignai.llc/og-image.svg">
     <link rel="icon" type="image/svg+xml" href="sigil.svg">
@@ -20,35 +22,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="citadel.css?v=20261013a">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
-                    },
-                    colors: {
-                        sovereign: {
-                            gold: '#D4AF37',
-                            obsidian: '#05070A',
-                        },
-                        /* Align Tailwind amber accents with brand gold */
-                        amber: {
-                            50: '#FBF6E9',
-                            300: '#E5C84A',
-                            400: '#D4AF37',
-                            500: '#B8962E',
-                        },
-                    },
-                },
+    <link rel="stylesheet" href="citadel.css?v=20261013b">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://sovereignai.llc/#organization",
+                "name": "SovereignAI LLC",
+                "alternateName": "SovereignAI",
+                "url": "https://sovereignai.llc/",
+                "logo": "https://sovereignai.llc/sigil.svg",
+                "email": "guy@sovereignai.llc",
+                "description": "Sovereign, on-premise AI systems on operator-owned hardware with zero data egress, for energy, defense, healthcare, finance, and other critical sectors.",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "sales",
+                    "email": "guy@sovereignai.llc",
+                    "url": "https://sovereignai.llc/#inquiry"
+                }
             },
-        };
+            {
+                "@type": "WebSite",
+                "@id": "https://sovereignai.llc/#website",
+                "name": "SovereignAI",
+                "url": "https://sovereignai.llc/",
+                "inLanguage": "en",
+                "publisher": { "@id": "https://sovereignai.llc/#organization" }
+            }
+        ]
+    }
     </script>
 </head>
-<body>
+<body class="home">
     <canvas id="resonant-field" aria-hidden="true"></canvas>
 
     <nav>

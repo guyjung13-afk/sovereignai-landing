@@ -1,0 +1,29 @@
+# SovereignAI
+
+> SovereignAI LLC builds sovereign, on-premise AI systems that run entirely on operator-owned hardware with zero data egress. Models, retrieval, memory, and agent runtimes operate inside the customer's physical and jurisdictional perimeter and remain fully capable offline or air-gapped. Core promise: Your AI. Your Data. Your Privacy.
+
+Primary deployments are Energy & SCADA (grid, utilities, OT telemetry, air-gapped sites) and Privilege-Preserving Enterprise (legal, finance, compliance, proprietary data). Adjacent deployments include defense, healthcare, and manufacturing.
+
+The Sovereign Nodal Stack has four layers, from surface to foundation:
+
+- CITADEL: custom-tailored agent, the complete system, fully capable off-grid
+- ENCLAVE: local weights, constraints, and guardrails
+- SPIRE: local agent execution on customer hardware
+- VAULT: local storage; data and models never leave the perimeter
+
+Supported hardware includes NVIDIA, AMD, Tenstorrent, Apple Silicon, Intel Gaudi, and Qualcomm platforms.
+
+## Pages
+
+- [Home](https://sovereignai.llc/): Principles, deployment domains, the Sovereign Nodal Stack, hardware, and the briefing request form
+- [The Sovereign Manifesto](https://sovereignai.llc/manifesto.html): Why intelligence must operate inside the organization's perimeter; security and compliance posture
+- [Request a Briefing](https://sovereignai.llc/#inquiry): Private technical briefing for qualified operators
+
+## Contact
+
+- [Email](mailto:guy@sovereignai.llc): guy@sovereignai.llc
+
+## Optional
+
+- [Privacy Policy](https://sovereignai.llc/privacy.html)
+- [Terms of Service](https://sovereignai.llc/terms.html)

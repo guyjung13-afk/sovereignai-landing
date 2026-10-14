@@ -1132,10 +1132,12 @@ section h2 {
     position: relative; z-index: 2;
 }
 
-.legal-content h2, .manifesto-full h3 {
+.legal-content h2, .manifesto-full h2 {
     font-family: var(--font-mono); font-size: 0.95rem; color: var(--gold);
     letter-spacing: 0.15em; text-transform: uppercase; margin: 2.5rem 0 1rem;
 }
+
+.manifesto-full h2 { line-height: 1.6; }
 
 .legal-content p, .manifesto-full p {
     color: var(--steel); font-size: 0.95rem; font-weight: 300;
@@ -1167,7 +1169,7 @@ section h2 {
     border-left: 2px solid var(--gold); padding-left: 1.5rem;
 }
 
-.security-item h4 {
+.security-item h3 {
     font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold);
     letter-spacing: 0.1em; margin-bottom: 0.5rem; text-transform: uppercase;
 }
@@ -1664,4 +1666,123 @@ section h2 {
     .inquiry__submit {
         min-height: 3.15rem;
     }
+}
+
+/*  -  -  -  Home page base reset (Tailwind preflight equivalent)  -  -  -  */
+/* Scoped to body.home: subpages were designed without it. :where() keeps
+   specificity at element level so component classes still win. */
+:where(.home),
+:where(.home) *,
+:where(.home) ::before,
+:where(.home) ::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}
+body:where(.home) { line-height: 1.5; }
+:where(.home) :is(h1, h2, h3, h4, h5, h6) { font-size: inherit; font-weight: inherit; }
+:where(.home) a { color: inherit; text-decoration: inherit; }
+:where(.home) :is(b, strong) { font-weight: bolder; }
+:where(.home) :is(ol, ul, menu) { list-style: none; }
+:where(.home) :is(button, input, optgroup, select, textarea) {
+    font-family: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+}
+:where(.home) :is(button, select) { text-transform: none; }
+:where(.home) :is(button, input:where([type='button'], [type='reset'], [type='submit'])) {
+    -webkit-appearance: button;
+    appearance: button;
+    background-color: transparent;
+    background-image: none;
+}
+:where(.home) textarea { resize: vertical; }
+:where(.home) :is(input, textarea)::placeholder { opacity: 1; color: #9ca3af; }
+:where(.home) button,
+:where(.home) [role='button'] { cursor: pointer; }
+:where(.home) :disabled { cursor: default; }
+:where(.home) :is(img, svg, video, canvas, audio, iframe, embed, object) { display: block; vertical-align: middle; }
+:where(.home) :is(img, video) { max-width: 100%; height: auto; }
+
+/*  -  -  -  Layout utilities (Tailwind-compatible names and values)  -  -  -  */
+/* Kept last so they override component rules, matching the previous cascade. */
+.mx-auto { margin-left: auto; margin-right: auto; }
+.m-0 { margin: 0; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-12 { margin-bottom: 3rem; }
+.p-0 { padding: 0; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+
+.max-w-3xl { max-width: 48rem; }
+.max-w-5xl { max-width: 64rem; }
+.max-w-6xl { max-width: 72rem; }
+.w-6 { width: 1.5rem; }
+.h-6 { height: 1.5rem; }
+.h-full { height: 100%; }
+
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.items-center { align-items: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-6 { gap: 1.5rem; }
+.list-none { list-style: none; }
+
+.border { border-width: 1px; border-style: solid; }
+.border-t { border-top-width: 1px; border-top-style: solid; }
+.border-zinc-800 { border-color: #27272a; }
+.border-amber-500\/30 { border-color: rgba(184, 150, 46, 0.3); }
+.bg-amber-500\/5 { background-color: rgba(184, 150, 46, 0.05); }
+.rounded-full { border-radius: 9999px; }
+
+.font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.font-medium { font-weight: 500; }
+.font-bold { font-weight: 700; }
+.text-xs { font-size: 0.75rem; line-height: 1rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-\[2px\] { letter-spacing: 2px; }
+.text-white { color: #fff; }
+.text-zinc-400 { color: #a1a1aa; }
+.text-amber-400 { color: #D4AF37; }
+.hover\:text-amber-300:hover { color: #E5C84A; }
+
+.transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+.transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+.group-hover\:translate-x-0\.5 { display: inline-block; }
+.group:hover .group-hover\:translate-x-0\.5 { transform: translateX(0.125rem); }
+
+@media (min-width: 768px) {
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .md\:text-5xl { font-size: 3rem; line-height: 1; }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .group:hover .group-hover\:translate-x-0\.5 { transform: none; }
 }
